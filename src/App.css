@@ -1,0 +1,6 @@
+.app {
+  background: yellow;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
