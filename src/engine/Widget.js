@@ -5,8 +5,12 @@ const source = {
   canDrag(props) {
     return true;
   },
-  beginDrag: () => {
-    return {};
+  beginDrag: (props) => {
+    return {
+      id: props.id,
+      type: props.type,
+      path: props.path
+    }
   }
 };
 

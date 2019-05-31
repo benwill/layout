@@ -12,46 +12,8 @@ const design = {
   gridTemplateRows: "minmax(100px, auto) 1fr"
 };
 
-const target = {
-  canDrop(props, monitor) {
-    return true;
-  },
-
-  drop(props, monitor, component) {
-    console.log("DROPPED ON");
-    return { moved: true };
-  }
-};
-
-/**
- * Specifies which props to inject into your component.
- */
-function collect(connect, monitor) {
-  return {
-    // Call this function inside render()
-    // to let React DnD handle the drag events:
-    connectDropTarget: connect.dropTarget(),
-    // You can ask the monitor about the current drag state:
-    isOver: monitor.isOver(),
-    isOverCurrent: monitor.isOver({ shallow: true }),
-    canDrop: monitor.canDrop(),
-    itemType: monitor.getItemType()
-  };
-}
-
-function PageContainer({ id, areas, renderArea, designMode, renderDropZone }) {
+function PageContainer({ id, areas, renderArea, designMode, renderDropZone, path }) {
   const css = designMode ? design : runtime;
-
-  const [collectedProps, drop] = useDrop({
-    accept: 'A',
-    drop: () => {
-      console.log("dropped");
-    },
-    collect: monitor => ({
-      isOver: monitor.isOver(),
-      canDrop: monitor.canDrop()
-    })
-  });
 
   return (
     <div
@@ -67,9 +29,9 @@ function PageContainer({ id, areas, renderArea, designMode, renderDropZone }) {
           gridArea: "top"
         }}
       >
-        {renderDropZone(id, 'top', true)}
-        {renderArea(areas.top)}
-        {renderDropZone(id, 'bottom', false)}
+        {renderDropZone(id, path, 'top', true)}
+        {renderArea(areas, path, 'top')}
+        {renderDropZone(id, path, 'bottom', false)}
       </div>
 
       <div
@@ -77,7 +39,7 @@ function PageContainer({ id, areas, renderArea, designMode, renderDropZone }) {
           gridArea: "main"
         }}
       >
-        {renderArea(areas.main)}
+        {renderArea(areas, path, "main")}
       </div>
 
       <div
@@ -85,7 +47,7 @@ function PageContainer({ id, areas, renderArea, designMode, renderDropZone }) {
           gridArea: "side"
         }}
       >
-        {renderArea(areas.right)}
+        {renderArea(areas, path, "right")}
       </div>
     </div>
   );

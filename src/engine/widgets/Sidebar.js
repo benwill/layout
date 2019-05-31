@@ -1,6 +1,6 @@
 import React from "react";
 
-function Sidebar(props) {
+function Sidebar({ renderArea, path, areas }) {
   return (
     <div
       style={{
@@ -10,6 +10,8 @@ function Sidebar(props) {
       }}
     >
       sidebar
+
+      {renderArea(areas, path, 'top')}
     </div>
   );
 }
