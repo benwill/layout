@@ -9,7 +9,7 @@ const source = {
     return {
       id: props.id,
       type: props.type,
-      path: props.path
+      componentPath: props.componentPath
     }
   }
 };

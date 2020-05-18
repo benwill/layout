@@ -7,9 +7,16 @@ const target = {
   },
 
   drop(props, monitor, component) {
-    const { id, area, before, onDrop, path } = props;
+    const { componentPath, onDrop, before, position, id } = props;
 
-    onDrop(monitor.getItem(), { id, area, before, path });
+
+    const item = monitor.getItem()
+    onDrop(item, {
+      before,
+      position,
+      id,
+      componentPath
+    });
 
     return { moved: true };
   }
@@ -31,16 +38,17 @@ function collect(connect, monitor) {
   };
 }
 
-function DropZone({ id, area, before, isOverCurrent, connectDropTarget }) {
+function DropZone({ id, before, isOverCurrent, connectDropTarget }) {
   const s = isOverCurrent
     ? {
-        border: "1px dotted red"
-      }
+      border: "1px dotted red",
+      background: "white"
+    }
     : {};
   //onDrop
   return connectDropTarget(
     <span style={s}>
-      dz for {id} - {area} - {before.toString()}
+      DZ for {id}
     </span>
   );
 }

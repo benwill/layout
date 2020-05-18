@@ -1,6 +1,6 @@
 import React from "react";
 
-function Sidebar({ renderArea, path, areas }) {
+function Sidebar({ renderAreas, renderDropZone }) {
   return (
     <div
       style={{
@@ -11,7 +11,8 @@ function Sidebar({ renderArea, path, areas }) {
     >
       sidebar
 
-      {renderArea(areas, path, 'top')}
+      {renderAreas('top')}
+      {renderDropZone('top', false)}
     </div>
   );
 }

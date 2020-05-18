@@ -12,7 +12,7 @@ const design = {
   gridTemplateRows: "minmax(100px, auto) 1fr"
 };
 
-function PageContainer({ id, areas, renderArea, designMode, renderDropZone, path }) {
+function PageContainer({ renderAreas, designMode, renderDropZone, componentPath }) {
   const css = designMode ? design : runtime;
 
   return (
@@ -29,9 +29,9 @@ function PageContainer({ id, areas, renderArea, designMode, renderDropZone, path
           gridArea: "top"
         }}
       >
-        {renderDropZone(id, path, 'top', true)}
-        {renderArea(areas, path, 'top')}
-        {renderDropZone(id, path, 'bottom', false)}
+        {renderDropZone('top', true)}
+        {renderAreas('top')}
+        {renderDropZone('bottom', false)}
       </div>
 
       <div
@@ -39,7 +39,7 @@ function PageContainer({ id, areas, renderArea, designMode, renderDropZone, path
           gridArea: "main"
         }}
       >
-        {renderArea(areas, path, "main")}
+        {renderAreas("main")}
       </div>
 
       <div
@@ -47,7 +47,7 @@ function PageContainer({ id, areas, renderArea, designMode, renderDropZone, path
           gridArea: "side"
         }}
       >
-        {renderArea(areas, path, "right")}
+        {renderAreas("right")}
       </div>
     </div>
   );
