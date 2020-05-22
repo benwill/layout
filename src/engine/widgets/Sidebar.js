@@ -9,10 +9,14 @@ function Sidebar({ renderAreas, renderDropZone }) {
         background: "blue"
       }}
     >
-      sidebar
-
-      {renderAreas('top')}
-      {renderDropZone('top', false)}
+      <br /> <br /> <br />
+      {renderDropZone("top", true)}
+      <br /> <br /> <br />
+      {renderAreas("top")}
+      <br /> <br /> <br />
+      {renderDropZone("top", false)}
+      <br /> <br /> <br />
+      stuff here
     </div>
   );
 }

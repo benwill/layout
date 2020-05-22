@@ -12,7 +12,12 @@ const design = {
   gridTemplateRows: "minmax(100px, auto) 1fr"
 };
 
-function PageContainer({ renderAreas, designMode, renderDropZone, componentPath }) {
+function PageContainer({
+  renderAreas,
+  designMode,
+  renderDropZone,
+  componentPath
+}) {
   const css = designMode ? design : runtime;
 
   return (
@@ -29,9 +34,7 @@ function PageContainer({ renderAreas, designMode, renderDropZone, componentPath 
           gridArea: "top"
         }}
       >
-        {renderDropZone('top', true)}
-        {renderAreas('top')}
-        {renderDropZone('bottom', false)}
+        {renderAreas("top")}
       </div>
 
       <div

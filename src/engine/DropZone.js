@@ -9,8 +9,7 @@ const target = {
   drop(props, monitor, component) {
     const { componentPath, onDrop, before, position, id } = props;
 
-
-    const item = monitor.getItem()
+    const item = monitor.getItem();
     onDrop(item, {
       before,
       position,
@@ -38,17 +37,23 @@ function collect(connect, monitor) {
   };
 }
 
-function DropZone({ id, before, isOverCurrent, connectDropTarget }) {
+function DropZone({
+  id,
+  before,
+  isOverCurrent,
+  connectDropTarget,
+  componentPath
+}) {
   const s = isOverCurrent
     ? {
-      border: "1px dotted red",
-      background: "white"
-    }
+        border: "1px dotted red",
+        background: "white"
+      }
     : {};
   //onDrop
   return connectDropTarget(
     <span style={s}>
-      DZ for {id}
+      DZ for {id} {componentPath}
     </span>
   );
 }

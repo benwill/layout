@@ -2,6 +2,7 @@ import PageContainer from "./PageContainer";
 import Sidebar from "./Sidebar";
 import Toolbar from "./Toolbar";
 import Text from "./Text";
+import Section from "./Section";
 
 export default {
   PAGE: {
@@ -19,5 +20,9 @@ export default {
   TEXT: {
     component: Text,
     canDrag: true
+  },
+  SECTION: {
+    component: Section,
+    canDrag: false
   }
 };
