@@ -73,3 +73,29 @@ export default {
     },
   ],
 };
+
+// export const test = [
+//   {
+//     id: shortid.generate(),
+//     type: "TEXT",
+//     props: {
+//       value: "hello 1",
+//     },
+//   },
+
+//   {
+//     id: shortid.generate(),
+//     type: "TEXT",
+//     props: {
+//       value: "hello 2",
+//     },
+//   },
+
+//   {
+//     id: shortid.generate(),
+//     type: "TEXT",
+//     props: {
+//       value: "hello 3",
+//     },
+//   },
+// ];
