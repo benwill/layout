@@ -1,6 +1,8 @@
 import React from "react";
 
-function Sidebar({ renderArea, renderDropZone }) {
+import Area from "../Area";
+
+function Sidebar({ componentPath, renderDropZone }) {
   return (
     <div
       style={{
@@ -12,7 +14,7 @@ function Sidebar({ renderArea, renderDropZone }) {
       <br /> <br /> <br />
       {/* {renderDropZone("top", 0)} */}
       <br /> <br /> <br />
-      {renderArea("top")}
+      <Area componentPath={componentPath} areaName="top" />
       <br /> <br /> <br />
       {/* {renderDropZone("top")} */}
       <br /> <br /> <br />

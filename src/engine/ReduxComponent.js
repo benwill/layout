@@ -15,10 +15,12 @@ const renderComponentHelper = (componentPath) => {
   return <ReduxComponent componentPath={componentPath} />;
 };
 
-const renderAreaHelper = (area, parentPath, areaName) => {
-  return area.map((c, idx) => {
+const renderAreaHelper = (areaNames, parentPath, areaName) => {
+  // do this as a component?
+  return areaNames.map((c, idx) => {
     const componentPath = getComponentPath(parentPath, areaName, idx);
 
+    // return null;
     return (
       <ReduxComponent key={componentPath} componentPath={componentPath} />
       //   <span key={parentPath + areaName + idx}>
@@ -36,21 +38,31 @@ const renderAreaHelper = (area, parentPath, areaName) => {
 };
 
 const ReduxComponent = ({ componentPath }) => {
-  const state = useSelector((state) => {
-    return dotProp.get(state.layout.config, componentPath);
+  const props = useSelector((state) => {
+    const comp = dotProp.get(state.layout.config, componentPath);
+    return comp.props;
+  });
+  //   const areaNames = useSelector((state) => {
+  //     const areas = dotProp.get(state.layout.config, componentPath);
+
+  //     if (!areas) return [];
+  //     return Object.keys(areas);
+  //   });
+  const type = useSelector((state) => {
+    return dotProp.get(state.layout.config, componentPath).type;
   });
 
   const dispatch = useDispatch();
 
-  const { areas, props, type, id } = state;
+  //   const { areas, props, type, id } = state;
 
-  const renderArea = useCallback(
-    (areaName) => {
-      const area = areas[areaName];
-      return renderAreaHelper(area, componentPath, areaName);
-    },
-    [areas, componentPath]
-  );
+  //   const renderArea = useCallback(
+  //     (areaName) => {
+  //       //   const area = areas[areaName];
+  //       return renderAreaHelper(areaNames, componentPath, areaName);
+  //     },
+  //     [areaNames, componentPath]
+  //   );
 
   const updateProperties = useCallback(
     (properties) => {
@@ -64,14 +76,14 @@ const ReduxComponent = ({ componentPath }) => {
 
   const css = classNames("component");
 
-  console.log("RENDERING", componentPath);
+  //   console.log("RENDERING", componentPath, props, type);
   return (
     <div className={css}>
       {/* {/* {componentPath} {renderAreas(state.areas)} */}
 
       <ReactComponent
         {...props}
-        renderArea={renderArea}
+        // renderArea={renderArea}
         updateProperties={updateProperties}
         // {...context}
         // renderAreas={(position) => {
@@ -85,7 +97,7 @@ const ReduxComponent = ({ componentPath }) => {
         // updateProperty={(values) => {
         //   updateProperty(componentPath, values);
         // }}
-        id={id}
+        // id={id}
         componentPath={componentPath}
         canDrag
       />
