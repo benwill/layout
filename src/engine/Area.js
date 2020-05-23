@@ -39,25 +39,36 @@ import dotProp from "dot-prop-immutable";
 // };
 
 const Area = ({ componentPath, areaName }) => {
-  const fullPath = `${componentPath}.areas.${areaName}`;
-
   // console.log("render area", componentPath);
-  const componentIds = useSelector((state) => {
-    const components = dotProp.get(state.layout.config, fullPath);
-    return components.map((x) => x.id);
+  const totalComponents = useSelector((state) => {
+    const components = dotProp.get(
+      state.layout.config,
+      `${componentPath}.areas.${areaName}`
+    );
+    return components.length;
   });
 
-  console.log("RENDERING AREA", componentPath);
+  // const fullPath = `${componentPath}.areas.${areaName}`;
 
-  return null;
-  return (
-    // <div className="area">
-    componentIds &&
-    componentIds.map((id, idx) => {
-      return <Component key={id} componentPath={`${fullPath}.${idx}`} />;
-    })
-    // </div>
-  );
+  console.log("RENDERING AREA", componentPath, areaName);
+
+  // return null;
+  return [...Array(totalComponents)].map((item, index) => {
+    return (
+      <Component
+        key={index}
+        componentPath={`${componentPath}.areas.${areaName}.${index}`}
+      />
+    );
+  });
+
+  // // <div className="area">
+  // componentPaths.map((id, idx) => {
+  //   return (
+
+  //   );
+  // })
+  // </div>
 };
 
 export default Area;

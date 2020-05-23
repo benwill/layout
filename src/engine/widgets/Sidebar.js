@@ -15,7 +15,7 @@ function Sidebar({ componentPath, renderDropZone }) {
       <br /> <br /> <br />
       {/* {renderDropZone("top", 0)} */}
       <br /> <br /> <br />
-      {/* <Area componentPath={componentPath} areaName="top" /> */}
+      <Area componentPath={componentPath} areaName="top" />
       <br /> <br /> <br />
       {/* {renderDropZone("top")} */}
       <br /> <br /> <br />

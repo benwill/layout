@@ -11,9 +11,9 @@ function Section({ componentPath, title }) {
     <div className={styles.section}>
       <h2>{title}</h2>
 
-      <ReduxComponent componentPath={"root.areas.main.0.areas.main.0"} />
+      {/* <ReduxComponent componentPath={"root.areas.main.0.areas.main.0"} /> */}
 
-      {/* <Area componentPath={componentPath} areaName="main" /> */}
+      <Area componentPath={componentPath} areaName="main" />
 
       {/* {renderArea("main")} */}
       {/* {renderDropZone("main")} */}
