@@ -5,13 +5,17 @@ const source = {
   canDrag(props) {
     return true;
   },
-  beginDrag: props => {
+  beginDrag: (props) => {
+    props.onStartDrag();
     return {
       id: props.id,
       type: props.type,
-      componentPath: props.componentPath
+      componentPath: props.componentPath,
     };
-  }
+  },
+  endDrag: (props) => {
+    props.onStopDrag();
+  },
 };
 
 function collect(connect, monitor) {
@@ -20,14 +24,16 @@ function collect(connect, monitor) {
     // to let React DnD handle the drag events:
     connectDragSource: connect.dragSource(),
     // You can ask the monitor about the current drag state:
-    isDragging: monitor.isDragging()
+    isDragging: monitor.isDragging(),
   };
 }
 
-const Widget = DragSource("A", source, collect)(
-  ({ connectDragSource, children }) => {
-    return connectDragSource(<div>{children}</div>);
-  }
-);
+const Widget = DragSource(
+  "A",
+  source,
+  collect
+)(({ connectDragSource, children }) => {
+  return connectDragSource(<div>{children}</div>);
+});
 
 export default Widget;

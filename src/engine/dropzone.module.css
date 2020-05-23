@@ -1,0 +1,9 @@
+.dropzone {
+  border: 1px dashed #dbdbdb;
+  visibility: hidden;
+}
+
+.dropzone__active {
+  border: 1px dashed #dbdbdb;
+  background: yellow;
+}

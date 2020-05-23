@@ -6,15 +6,15 @@ function Sidebar({ renderAreas, renderDropZone }) {
       style={{
         height: "100%",
         width: "200px",
-        background: "blue"
+        background: "blue",
       }}
     >
       <br /> <br /> <br />
-      {renderDropZone("top", true)}
+      {renderDropZone("top", 0)}
       <br /> <br /> <br />
       {renderAreas("top")}
       <br /> <br /> <br />
-      {renderDropZone("top", false)}
+      {renderDropZone("top")}
       <br /> <br /> <br />
       stuff here
     </div>

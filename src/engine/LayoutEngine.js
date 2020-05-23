@@ -1,8 +1,9 @@
 import React from "react";
-import widgets from "./widgets";
 
 import DropZone from "./DropZone";
-import Widget from "./Widget";
+import Component from "./Component";
+
+import "./layoutEngine.css";
 
 const LayoutContext = React.createContext();
 
@@ -10,44 +11,23 @@ const getComponentPath = (parent, areaName, index) => {
   return `${parent}.areas.${areaName}.${index}`;
 };
 
-function App({ config, designMode = true, onDrop }) {
+function App({ config, designMode = true, onDrop, onStartDrag, onStopDrag }) {
   const renderComponent = (type, areas, props, id, componentPath) => {
-    const { component: Component, canDrag } = widgets[type];
-
     console.log(componentPath);
     return (
       <LayoutContext.Consumer key={id}>
-        {context => {
-          const component = (
-            <>
-              {/* <span>{componentPath}</span> */}
-              <Component
-                areas={areas}
-                {...props}
-                {...context}
-                renderAreas={position => {
-                  return context.renderAreas(areas, position, componentPath);
-                }}
-                renderDropZone={(position, isBefore) => {
-                  return context.renderDropZone(
-                    id,
-                    position,
-                    isBefore,
-                    componentPath
-                  );
-                }}
-                id={id}
-                componentPath={componentPath}
-                canDrag
-              />
-            </>
-          );
-          return canDrag ? (
-            <Widget id={id} type={type} componentPath={componentPath}>
-              {component}
-            </Widget>
-          ) : (
-            component
+        {(context) => {
+          return (
+            <Component
+              id={id}
+              areas={areas}
+              props={props}
+              context={context}
+              componentPath={componentPath}
+              onStartDrag={onStartDrag}
+              onStopDrag={onStopDrag}
+              type={type}
+            />
           );
         }}
       </LayoutContext.Consumer>
@@ -70,7 +50,7 @@ function App({ config, designMode = true, onDrop }) {
     });
   };
 
-  const renderRoot = config => {
+  const renderRoot = (config) => {
     const c = config.root[0];
 
     return renderComponent(
@@ -82,14 +62,13 @@ function App({ config, designMode = true, onDrop }) {
     );
   };
 
-  const renderDropZone = (id, position, before, componentPath) => {
+  const renderDropZone = (id, componentPath, index) => {
     return (
       <DropZone
         id={id}
-        position={position}
-        before={before}
         onDrop={onDrop}
         componentPath={componentPath}
+        targetIndex={index}
       />
     );
   };
@@ -100,7 +79,7 @@ function App({ config, designMode = true, onDrop }) {
         designMode,
         renderComponent,
         renderAreas,
-        renderDropZone
+        renderDropZone,
       }}
     >
       <div
@@ -114,21 +93,3 @@ function App({ config, designMode = true, onDrop }) {
 }
 
 export default App;
-
-// Consider resursing through tree
-// function findNode(id, currentNode) {
-
-//   if (id == currentNode.id) {
-//       return currentNode;
-//   } else {
-//       var result;
-//       for(var index in currentNode.children){
-//           var node = currentNode.children[index];
-//           if(node.id == id)
-//               return node;
-//           findNode(id, node);
-//       }
-//       return "No Node Present";
-//   }
-// }
-// console.log(findNode("1", node));

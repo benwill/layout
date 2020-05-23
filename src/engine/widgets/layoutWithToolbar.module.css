@@ -8,8 +8,8 @@
 
 .layout__top {
   grid-area: top;
-  /* display: flex;
-  flex-direction: column; */
+  display: flex;
+  flex-direction: column;
 }
 
 .layout__main {
@@ -22,6 +22,6 @@
 
 .layout__right {
   grid-area: right;
-  /* display: flex;
-  flex-direction: column; */
+  display: flex;
+  flex-direction: column;
 }

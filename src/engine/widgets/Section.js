@@ -8,7 +8,7 @@ function Section({ renderAreas, renderDropZone, title }) {
       <h2>{title}</h2>
 
       {renderAreas("main")}
-      {renderDropZone("main", false)}
+      {renderDropZone("main")}
     </div>
   );
 }

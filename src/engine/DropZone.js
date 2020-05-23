@@ -1,5 +1,6 @@
 import React from "react";
 import { DropTarget } from "react-dnd";
+import styles from "./dropzone.module.css";
 
 const target = {
   canDrop(props, monitor) {
@@ -7,18 +8,17 @@ const target = {
   },
 
   drop(props, monitor, component) {
-    const { componentPath, onDrop, before, position, id } = props;
+    const { componentPath, onDrop, targetIndex, id } = props;
 
     const item = monitor.getItem();
     onDrop(item, {
-      before,
-      position,
+      targetIndex,
       id,
-      componentPath
+      componentPath,
     });
 
     return { moved: true };
-  }
+  },
 };
 
 /**
@@ -33,27 +33,23 @@ function collect(connect, monitor) {
     isOver: monitor.isOver(),
     isOverCurrent: monitor.isOver({ shallow: true }),
     canDrop: monitor.canDrop(),
-    itemType: monitor.getItemType()
+    itemType: monitor.getItemType(),
   };
 }
 
 function DropZone({
   id,
-  before,
   isOverCurrent,
   connectDropTarget,
-  componentPath
+  targetIndex,
+  componentPath,
 }) {
-  const s = isOverCurrent
-    ? {
-        border: "1px dotted red",
-        background: "white"
-      }
-    : {};
-  //onDrop
+  const className = isOverCurrent ? styles.dropzone__active : styles.dropzone;
+
   return connectDropTarget(
-    <span style={s}>
+    <span className={className + " dropzone"}>
       DZ for {id} {componentPath}
+      {targetIndex}
     </span>
   );
 }

@@ -1,0 +1,10 @@
+.example {
+  flex: 1;
+  display: flex;
+  overflow: hidden;
+}
+
+.example--is-dragging .dropzone {
+  /* display: block; */
+  visibility: visible;
+}
