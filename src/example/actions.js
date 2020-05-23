@@ -2,9 +2,9 @@ import { createAction } from "@reduxjs/toolkit";
 
 export const changeProperties = createAction(
   "layout/changeProperties",
-  (index, props) => {
+  (componentPath, props) => {
     return {
-      payload: { index, props },
+      payload: { componentPath, props },
     };
   }
 );

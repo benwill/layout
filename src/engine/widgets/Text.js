@@ -1,11 +1,11 @@
 import React from "react";
 
-function Text({ value, updateProperty }) {
+function Text({ value, updateProperties }) {
   return (
     <div>
       <textarea
         value={value}
-        onChange={(x) => updateProperty({ value: x.target.value })}
+        onChange={(x) => updateProperties({ value: x.target.value })}
       />
     </div>
   );

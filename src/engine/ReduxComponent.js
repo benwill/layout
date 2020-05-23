@@ -20,7 +20,7 @@ const renderAreaHelper = (area, parentPath, areaName) => {
     const componentPath = getComponentPath(parentPath, areaName, idx);
 
     return (
-      <ReduxComponent componentPath={componentPath} />
+      <ReduxComponent key={componentPath} componentPath={componentPath} />
       //   <span key={parentPath + areaName + idx}>
       //     {idx} - {)}
       //   </span>
@@ -40,12 +40,9 @@ const ReduxComponent = ({ componentPath }) => {
     return dotProp.get(state.layout.config, componentPath);
   });
 
-  const css = classNames("component");
+  const dispatch = useDispatch();
 
   const { areas, props, type, id } = state;
-
-  // TODO: Component rendering should be split ut of this
-  const { component: ReactComponent, canDrag } = widgets[type];
 
   const renderArea = useCallback(
     (areaName) => {
@@ -55,6 +52,19 @@ const ReduxComponent = ({ componentPath }) => {
     [areas, componentPath]
   );
 
+  const updateProperties = useCallback(
+    (properties) => {
+      dispatch(changeProperties(componentPath, properties));
+    },
+    [componentPath, dispatch]
+  );
+
+  // TODO: Component rendering should be split ut of this
+  const { component: ReactComponent, canDrag } = widgets[type];
+
+  const css = classNames("component");
+
+  console.log("RENDERING", componentPath);
   return (
     <div className={css}>
       {/* {/* {componentPath} {renderAreas(state.areas)} */}
@@ -62,6 +72,7 @@ const ReduxComponent = ({ componentPath }) => {
       <ReactComponent
         {...props}
         renderArea={renderArea}
+        updateProperties={updateProperties}
         // {...context}
         // renderAreas={(position) => {
         //   return context.renderAreas(areas, position, componentPath);
