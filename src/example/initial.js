@@ -31,24 +31,24 @@ export default {
             ],
           },
         },
-        {
-          id: shortid.generate(),
-          type: "SECTION",
-          props: {
-            title: "Section 2",
-          },
-          areas: {
-            main: [
-              {
-                id: shortid.generate(),
-                type: "TEXT",
-                props: {
-                  value: "hello world",
-                },
-              },
-            ],
-          },
-        },
+        // {
+        //   id: shortid.generate(),
+        //   type: "SECTION",
+        //   props: {
+        //     title: "Section 2",
+        //   },
+        //   areas: {
+        //     main: [
+        //       {
+        //         id: shortid.generate(),
+        //         type: "TEXT",
+        //         props: {
+        //           value: "hello world",
+        //         },
+        //       },
+        //     ],
+        //   },
+        // },
       ],
       right: [
         {

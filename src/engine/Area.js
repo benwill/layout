@@ -41,17 +41,22 @@ import dotProp from "dot-prop-immutable";
 const Area = ({ componentPath, areaName }) => {
   const fullPath = `${componentPath}.areas.${areaName}`;
 
-  console.log("render area", componentPath);
+  // console.log("render area", componentPath);
   const componentIds = useSelector((state) => {
     const components = dotProp.get(state.layout.config, fullPath);
     return components.map((x) => x.id);
   });
 
+  console.log("RENDERING AREA", componentPath);
+
+  return null;
   return (
+    // <div className="area">
     componentIds &&
     componentIds.map((id, idx) => {
       return <Component key={id} componentPath={`${fullPath}.${idx}`} />;
     })
+    // </div>
   );
 };
 

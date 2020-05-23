@@ -76,32 +76,33 @@ const ReduxComponent = ({ componentPath }) => {
 
   const css = classNames("component");
 
+  console.log("REDUX COMPONENT", props);
   //   console.log("RENDERING", componentPath, props, type);
   return (
-    <div className={css}>
-      {/* {/* {componentPath} {renderAreas(state.areas)} */}
+    // <div className={css}>
+    //   {/* {/* {componentPath} {renderAreas(state.areas)} */}
 
-      <ReactComponent
-        {...props}
-        // renderArea={renderArea}
-        updateProperties={updateProperties}
-        // {...context}
-        // renderAreas={(position) => {
-        //   return context.renderAreas(areas, position, componentPath);
-        // }}
-        // renderDropZone={(target, index) => {
-        //   const fullDropzonePath = `${componentPath}.areas.${target}`;
-        //   console.log(fullDropzonePath);
-        //   return context.renderDropZone(id, fullDropzonePath, index);
-        // }}
-        // updateProperty={(values) => {
-        //   updateProperty(componentPath, values);
-        // }}
-        // id={id}
-        componentPath={componentPath}
-        canDrag
-      />
-    </div>
+    <ReactComponent
+      {...props}
+      // renderArea={renderArea}
+      updateProperties={updateProperties}
+      // {...context}
+      // renderAreas={(position) => {
+      //   return context.renderAreas(areas, position, componentPath);
+      // }}
+      // renderDropZone={(target, index) => {
+      //   const fullDropzonePath = `${componentPath}.areas.${target}`;
+      //   console.log(fullDropzonePath);
+      //   return context.renderDropZone(id, fullDropzonePath, index);
+      // }}
+      // updateProperty={(values) => {
+      //   updateProperty(componentPath, values);
+      // }}
+      // id={id}
+      componentPath={componentPath}
+      canDrag
+    />
+    // </div>
   );
 };
 
