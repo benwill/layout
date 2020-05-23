@@ -1,4 +1,5 @@
 import React, { useState, useCallback } from "react";
+import { useSelector } from "react-redux";
 
 import dotProp from "dot-prop-immutable";
 import className from "classnames";
@@ -78,9 +79,11 @@ function Example() {
   return (
     <div className={css}>
       <Provider store={store}>
-        <ReduxComponent index={0} />
+        <LayoutEngine />
+
+        {/* <ReduxComponent index={0} />
         <ReduxComponent index={1} />
-        <ReduxComponent index={2} />
+        <ReduxComponent index={2} /> */}
       </Provider>
     </div>
   );

@@ -3,18 +3,17 @@ import React from "react";
 import styles from "./layoutWithToolbar.module.css";
 
 function LayoutWithToolbar({
-  renderAreas,
+  renderArea,
   designMode,
   renderDropZone,
   componentPath,
 }) {
   return (
     <div className={styles.layout}>
-      <div className={styles.layout__top}>{renderAreas("top")}</div>
-
-      <div className={styles.layout__main}>{renderAreas("main")}</div>
-
-      <div className={styles.layout__right}>{renderAreas("right")}</div>
+      hello
+      <div className={styles.layout__top}>{renderArea("top")}</div>
+      <div className={styles.layout__main}>{renderArea("main")}</div>
+      <div className={styles.layout__right}>{renderArea("right")}</div>
     </div>
   );
 }

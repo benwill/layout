@@ -2,13 +2,13 @@ import React from "react";
 
 import styles from "./section.module.css";
 
-function Section({ renderAreas, renderDropZone, title }) {
+function Section({ renderArea, renderDropZone, title }) {
   return (
     <div className={styles.section}>
       <h2>{title}</h2>
 
-      {renderAreas("main")}
-      {renderDropZone("main")}
+      {renderArea("main")}
+      {/* {renderDropZone("main")} */}
     </div>
   );
 }

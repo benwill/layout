@@ -1,11 +1,11 @@
 import { combineReducers } from "redux";
 import { createReducer } from "@reduxjs/toolkit";
 
-import { test } from "./initial";
+import initial from "./initial";
 import { changeProperties } from "./actions";
 
 const initialState = {
-  config: test,
+  config: initial,
   isDragging: false,
 };
 

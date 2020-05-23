@@ -1,6 +1,6 @@
 import React from "react";
 
-function Sidebar({ renderAreas, renderDropZone }) {
+function Sidebar({ renderArea, renderDropZone }) {
   return (
     <div
       style={{
@@ -10,11 +10,11 @@ function Sidebar({ renderAreas, renderDropZone }) {
       }}
     >
       <br /> <br /> <br />
-      {renderDropZone("top", 0)}
+      {/* {renderDropZone("top", 0)} */}
       <br /> <br /> <br />
-      {renderAreas("top")}
+      {renderArea("top")}
       <br /> <br /> <br />
-      {renderDropZone("top")}
+      {/* {renderDropZone("top")} */}
       <br /> <br /> <br />
       stuff here
     </div>
