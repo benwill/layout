@@ -12,6 +12,7 @@ function Component({
   props,
   context,
   componentPath,
+  updateProperty,
   onStartDrag,
   onStopDrag,
   type,
@@ -33,6 +34,9 @@ function Component({
           const fullDropzonePath = `${componentPath}.areas.${target}`;
           console.log(fullDropzonePath);
           return context.renderDropZone(id, fullDropzonePath, index);
+        }}
+        updateProperty={(values) => {
+          updateProperty(componentPath, values);
         }}
         id={id}
         componentPath={componentPath}

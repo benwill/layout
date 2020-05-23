@@ -11,9 +11,9 @@ const getComponentPath = (parent, areaName, index) => {
   return `${parent}.areas.${areaName}.${index}`;
 };
 
-function App({ config, designMode = true, onDrop, onStartDrag, onStopDrag }) {
-  const renderComponent = (type, areas, props, id, componentPath) => {
-    console.log(componentPath);
+class App extends React.PureComponent {
+  renderComponent = (type, areas, props, id, componentPath) => {
+    const { onStartDrag, onStopDrag, updateProperty } = this.props;
     return (
       <LayoutContext.Consumer key={id}>
         {(context) => {
@@ -26,6 +26,7 @@ function App({ config, designMode = true, onDrop, onStartDrag, onStopDrag }) {
               componentPath={componentPath}
               onStartDrag={onStartDrag}
               onStopDrag={onStopDrag}
+              updateProperty={updateProperty}
               type={type}
             />
           );
@@ -34,13 +35,12 @@ function App({ config, designMode = true, onDrop, onStartDrag, onStopDrag }) {
     );
   };
 
-  const renderAreas = (areas, position, parentPath) => {
+  renderAreas = (areas, position, parentPath) => {
     const area = areas[position];
-
     if (!area || area.length === 0) return null;
 
     return area.map((c, idx) => {
-      return renderComponent(
+      return this.renderComponent(
         c.type,
         c.areas,
         c.props,
@@ -50,10 +50,9 @@ function App({ config, designMode = true, onDrop, onStartDrag, onStopDrag }) {
     });
   };
 
-  const renderRoot = (config) => {
+  renderRoot = (config) => {
     const c = config.root[0];
-
-    return renderComponent(
+    return this.renderComponent(
       c.type,
       c.areas,
       c.props,
@@ -62,7 +61,8 @@ function App({ config, designMode = true, onDrop, onStartDrag, onStopDrag }) {
     );
   };
 
-  const renderDropZone = (id, componentPath, index) => {
+  renderDropZone = (id, componentPath, index) => {
+    const { onDrop } = this.props;
     return (
       <DropZone
         id={id}
@@ -73,23 +73,27 @@ function App({ config, designMode = true, onDrop, onStartDrag, onStopDrag }) {
     );
   };
 
-  return (
-    <LayoutContext.Provider
-      value={{
-        designMode,
-        renderComponent,
-        renderAreas,
-        renderDropZone,
-      }}
-    >
-      <div
-        className="layout-engine"
-        style={{ width: "100%", height: "100%", display: "flex" }}
+  render() {
+    const { config, designMode = true } = this.props;
+
+    return (
+      <LayoutContext.Provider
+        value={{
+          designMode,
+          renderComponent: this.renderComponent,
+          renderAreas: this.renderAreas,
+          renderDropZone: this.renderDropZone,
+        }}
       >
-        {renderRoot(config)}
-      </div>
-    </LayoutContext.Provider>
-  );
+        <div
+          className="layout-engine"
+          style={{ width: "100%", height: "100%", display: "flex" }}
+        >
+          {this.renderRoot(config)}
+        </div>
+      </LayoutContext.Provider>
+    );
+  }
 }
 
 export default App;
