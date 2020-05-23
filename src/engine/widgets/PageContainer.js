@@ -1,22 +1,20 @@
 import React from "react";
-import { __EXPERIMENTAL_DND_HOOKS_THAT_MAY_CHANGE_AND_BREAK_MY_BUILD__ as dnd } from "react-dnd";
-const { useDrop } = dnd;
 
 const runtime = {
   gridTemplateColumns: "1fr auto",
-  gridTemplateRows: "auto 1fr"
+  gridTemplateRows: "auto 1fr",
 };
 
 const design = {
   gridTemplateColumns: "1fr minmax(50px, auto)",
-  gridTemplateRows: "minmax(100px, auto) 1fr"
+  gridTemplateRows: "minmax(100px, auto) 1fr",
 };
 
 function PageContainer({
   renderAreas,
   designMode,
   renderDropZone,
-  componentPath
+  componentPath,
 }) {
   const css = designMode ? design : runtime;
 
@@ -26,12 +24,12 @@ function PageContainer({
         display: "grid",
         flex: "1",
         gridTemplateAreas: "'top side' 'main side'",
-        ...css
+        ...css,
       }}
     >
       <div
         style={{
-          gridArea: "top"
+          gridArea: "top",
         }}
       >
         {renderAreas("top")}
@@ -39,7 +37,7 @@ function PageContainer({
 
       <div
         style={{
-          gridArea: "main"
+          gridArea: "main",
         }}
       >
         {renderAreas("main")}
@@ -47,7 +45,7 @@ function PageContainer({
 
       <div
         style={{
-          gridArea: "side"
+          gridArea: "side",
         }}
       >
         {renderAreas("right")}
