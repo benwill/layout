@@ -1,19 +1,14 @@
 import React from "react";
 
-function Section({ renderAreas, renderDropZone }) {
+import styles from "./section.module.css";
+
+function Section({ renderAreas, renderDropZone, title }) {
   return (
-    <div
-      style={{
-        height: "100%",
-        width: "100%",
-        background: "pink"
-      }}
-    >
-      <br /> <br /> <br />
+    <div className={styles.section}>
+      <h2>{title}</h2>
+
       {renderAreas("main")}
-      <br /> <br /> <br />
       {renderDropZone("main", false)}
-      <br /> <br /> <br />
     </div>
   );
 }

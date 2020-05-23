@@ -1,28 +1,28 @@
-import PageContainer from "./PageContainer";
+import LayoutWithToolbar from "./LayoutWithToolbar";
 import Sidebar from "./Sidebar";
 import Toolbar from "./Toolbar";
 import Text from "./Text";
 import Section from "./Section";
 
 export default {
-  PAGE: {
-    component: PageContainer,
-    canDrag: false
+  LayoutWithToolbar: {
+    component: LayoutWithToolbar,
+    canDrag: false,
   },
   SIDEBAR: {
     component: Sidebar,
-    canDrag: false
+    canDrag: false,
   },
   TOOLBAR: {
     component: Toolbar,
-    canDrag: false
+    canDrag: false,
   },
   TEXT: {
     component: Text,
-    canDrag: true
+    canDrag: true,
   },
   SECTION: {
     component: Section,
-    canDrag: false
-  }
+    canDrag: true,
+  },
 };

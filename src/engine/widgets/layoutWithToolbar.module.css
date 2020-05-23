@@ -1,0 +1,27 @@
+.layout {
+  display: grid;
+  flex: 1;
+  grid-template-areas: "top right" "main right";
+  grid-template-columns: 1fr auto;
+  grid-template-rows: auto 1fr;
+}
+
+.layout__top {
+  grid-area: top;
+  /* display: flex;
+  flex-direction: column; */
+}
+
+.layout__main {
+  grid-area: main;
+  padding: 10px;
+  overflow-y: auto;
+  /* display: flex;
+  flex-direction: column; */
+}
+
+.layout__right {
+  grid-area: right;
+  /* display: flex;
+  flex-direction: column; */
+}

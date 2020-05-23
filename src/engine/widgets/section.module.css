@@ -1,0 +1,12 @@
+.section {
+  background: white;
+  flex-direction: column;
+  /* flex: 1; */
+  display: flex;
+  margin-bottom: 10px;
+  border: 2px solid #dbdbdb;
+
+  /* //   height: "100%",
+  //   width: "100%",
+  //   background: "pink" */
+}
