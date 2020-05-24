@@ -1,17 +1,9 @@
 import React from "react";
+import styles from "./sidebar.module.css";
 
-import Area from "../Area";
-
-function Sidebar({ componentPath, renderDropZone, renderArea }) {
-  console.log("RENDER SIDEBAR", componentPath);
+function Sidebar({ renderDropZone, renderArea }) {
   return (
-    <div
-      style={{
-        height: "100%",
-        width: "200px",
-        background: "blue",
-      }}
-    >
+    <div className={styles.sidebar}>
       <br /> <br /> <br />
       {renderDropZone("top", 0)}
       <br /> <br /> <br />
@@ -19,7 +11,6 @@ function Sidebar({ componentPath, renderDropZone, renderArea }) {
       <br /> <br /> <br />
       {renderDropZone("top")}
       <br /> <br /> <br />
-      stuff here
     </div>
   );
 }

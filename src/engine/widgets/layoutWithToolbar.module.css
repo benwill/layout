@@ -10,18 +10,19 @@
   grid-area: top;
   display: flex;
   flex-direction: column;
+  background: #cdcdcd;
 }
 
 .layout__main {
   grid-area: main;
   padding: 10px;
   overflow-y: auto;
-  /* display: flex;
-  flex-direction: column; */
 }
 
 .layout__right {
   grid-area: right;
   display: flex;
   flex-direction: column;
+  background: #c0c0c0;
+  width: 200px;
 }

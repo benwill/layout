@@ -1,17 +1,8 @@
 import React from "react";
+import styles from "./toolbar.module.css";
 
-function Toolbar(props) {
-  return (
-    <div
-      style={{
-        width: "100%",
-        height: "50px",
-        background: "red"
-      }}
-    >
-      Toolbar
-    </div>
-  );
+function Toolbar() {
+  return <div className={styles.toolbar}>Toolbar</div>;
 }
 
 export default Toolbar;

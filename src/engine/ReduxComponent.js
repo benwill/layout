@@ -112,8 +112,7 @@ const ReduxComponent = React.memo(({ componentPath }) => {
       //   updateProperty(componentPath, values);
       // }}
       // id={id}
-      componentPath={componentPath}
-      canDrag
+      canDrag={canDrag}
     />
   );
 
