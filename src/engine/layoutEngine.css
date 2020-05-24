@@ -1,9 +1,0 @@
-.component {
-  flex: 1;
-  display: flex;
-  position: relative;
-}
-
-.component--hovered {
-  background: red;
-}

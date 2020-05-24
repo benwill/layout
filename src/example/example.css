@@ -1,3 +1,4 @@
+/* WRAPPING LAYOUT */
 .example {
   flex: 1;
   display: flex;
@@ -5,6 +6,11 @@
   flex-direction: column;
 }
 
+.example--is-dragging .dropzone {
+  visibility: visible;
+}
+
+/* DROP ZONE STYLES */
 .dropzone {
   display: flex;
   justify-content: center;
@@ -16,9 +22,4 @@
 .dropzone__active {
   border: 1px dashed #dbdbdb;
   background: yellow;
-}
-
-.example--is-dragging .dropzone {
-  /* visibility: visible; */
-  visibility: visible;
 }
