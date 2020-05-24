@@ -13,6 +13,7 @@ import {
 } from "../example/actions";
 
 import Draggable from "./Draggable";
+import DropZone from "./DropZone";
 
 const ReduxComponent = React.memo(({ componentPath }) => {
   const props = useSelector((state) => {
@@ -53,6 +54,21 @@ const ReduxComponent = React.memo(({ componentPath }) => {
     dispatch(stopDragging());
   }, [dispatch]);
 
+  const renderDropZone = useCallback(
+    (areaName, targetIndex) => {
+      //   <DropZone componentPath={componentPath} areaName="main" onDrop={onDrop} />
+      return (
+        <DropZone
+          componentPath={componentPath}
+          areaName={areaName}
+          targetIndex={targetIndex}
+          onDrop={onDrop}
+        />
+      );
+    },
+    [onDrop, componentPath]
+  );
+
   //   const onStartDrag = useCallback(
   //     (properties) => {
   //       dispatch(changeProperties(componentPath, properties));
@@ -73,7 +89,7 @@ const ReduxComponent = React.memo(({ componentPath }) => {
       {...props}
       // renderArea={renderArea}
       updateProperties={updateProperties}
-      onDrop={onDrop}
+      renderDropZone={renderDropZone}
       // {...context}
       // renderAreas={(position) => {
       //   return context.renderAreas(areas, position, componentPath);

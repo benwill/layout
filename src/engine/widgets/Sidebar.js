@@ -1,9 +1,8 @@
 import React from "react";
 
 import Area from "../Area";
-import DropZone from "../DropZone";
 
-function Sidebar({ componentPath, onDrop }) {
+function Sidebar({ componentPath, renderDropZone }) {
   console.log("RENDER SIDEBAR", componentPath);
   return (
     <div
@@ -14,16 +13,11 @@ function Sidebar({ componentPath, onDrop }) {
       }}
     >
       <br /> <br /> <br />
-      <DropZone
-        componentPath={componentPath}
-        areaName="top"
-        onDrop={onDrop}
-        targetIndex={0}
-      />
+      {renderDropZone("top", 0)}
       <br /> <br /> <br />
       <Area componentPath={componentPath} areaName="top" />
       <br /> <br /> <br />
-      <DropZone componentPath={componentPath} areaName="top" onDrop={onDrop} />
+      {renderDropZone("top")}
       <br /> <br /> <br />
       stuff here
     </div>

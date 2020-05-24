@@ -5,7 +5,7 @@ import styles from "./section.module.css";
 
 import DropZone from "../DropZone";
 
-function Section({ componentPath, title, onDrop }) {
+function Section({ componentPath, title, renderDropZone }) {
   console.log("RENDER SECTION", componentPath);
   return (
     <div className={styles.section}>
@@ -13,7 +13,8 @@ function Section({ componentPath, title, onDrop }) {
 
       <Area componentPath={componentPath} areaName="main" />
 
-      <DropZone componentPath={componentPath} areaName="main" onDrop={onDrop} />
+      {renderDropZone("main")}
+      {/* <DropZone componentPath={componentPath} areaName="main" onDrop={onDrop} /> */}
     </div>
   );
 }
