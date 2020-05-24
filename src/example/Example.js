@@ -72,20 +72,14 @@ function Example() {
   //   [config]
   // );
 
-  const css = className("example", {
-    "example--is-dragging": false, //todo
-  });
-
   return (
-    <div className={css}>
-      <Provider store={store}>
-        <LayoutEngine />
+    <Provider store={store}>
+      <LayoutEngine />
 
-        {/* <ReduxComponent index={0} />
+      {/* <ReduxComponent index={0} />
         <ReduxComponent index={1} />
         <ReduxComponent index={2} /> */}
-      </Provider>
-    </div>
+    </Provider>
   );
 }
 

@@ -1,4 +1,5 @@
 import React from "react";
+import className from "classnames";
 import { useSelector } from "react-redux";
 
 import DropZone from "./DropZone";
@@ -74,26 +75,21 @@ const getComponentPath = (parent, areaName, index) => {
 // };
 
 const LayoutEngine = () => {
-  // const { config, designMode = true } = this.props;
-  // const root = useSelector((state) => state.layout.config.root);
+  const isDragging = useSelector((state) => state.layout.isDragging);
 
-  // console.log(root);
+  const css = className("example", {
+    "example--is-dragging": isDragging,
+  });
+
   return (
-    // <LayoutContext.Provider
-    //   value={{
-    //     designMode,
-    //     renderComponent: this.renderComponent,
-    //     renderAreas: this.renderAreas,
-    //     renderDropZone: this.renderDropZone,
-    //   }}
-    // >
-    <div
-      className="layout-engine"
-      style={{ width: "100%", height: "100%", display: "flex" }}
-    >
-      <ReduxComponent componentPath={"root"}></ReduxComponent>
+    <div className={css}>
+      <div
+        className="layout-engine"
+        style={{ width: "100%", height: "100%", display: "flex" }}
+      >
+        <ReduxComponent componentPath={"root"}></ReduxComponent>
+      </div>
     </div>
-    // </LayoutContext.Provider>
   );
 };
 

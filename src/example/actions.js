@@ -8,3 +8,6 @@ export const changeProperties = createAction(
     };
   }
 );
+
+export const startDragging = createAction("layout/startDragging");
+export const stopDragging = createAction("layout/stopDragging");

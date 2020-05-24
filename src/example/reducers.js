@@ -4,7 +4,7 @@ import { createReducer } from "@reduxjs/toolkit";
 import dotProp from "dot-prop-immutable";
 
 import initial from "./initial";
-import { changeProperties } from "./actions";
+import { changeProperties, startDragging, stopDragging } from "./actions";
 
 const initialState = {
   config: initial,
@@ -23,7 +23,14 @@ const layout = createReducer(initialState, {
       ...props,
     });
   },
+  [startDragging]: (draft) => {
+    draft.isDragging = true;
+  },
+  [stopDragging]: (draft) => {
+    draft.isDragging = false;
+  },
 });
+
 const rootReducer = combineReducers({
   layout,
 });
