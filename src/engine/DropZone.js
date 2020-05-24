@@ -1,7 +1,5 @@
 import React from "react";
-import { useSelector, useDispatch } from "react-redux";
 import { DropTarget } from "react-dnd";
-import styles from "./dropzone.module.css";
 import classNames from "classnames";
 
 const target = {
@@ -21,9 +19,6 @@ const target = {
   },
 };
 
-/**
- * Specifies which props to inject into your component.
- */
 function collect(connect, monitor) {
   return {
     // Call this function inside render()
@@ -37,23 +32,14 @@ function collect(connect, monitor) {
   };
 }
 
-function DropZone({
-  id,
-  isOverCurrent,
-  connectDropTarget,
-  targetIndex,
-  componentPath,
-  areaName,
-}) {
+function DropZone({ isOverCurrent, connectDropTarget, targetIndex }) {
   const css = classNames("dropzone", {
-    [styles.dropzone__active]: isOverCurrent,
+    dropzone__active: isOverCurrent,
   });
-
-  const dropZonePath = `${componentPath}.areas.${areaName}`;
 
   return connectDropTarget(
     <span className={css}>
-      DZ for {dropZonePath} areas
+      Drag here to move
       {targetIndex}
     </span>
   );

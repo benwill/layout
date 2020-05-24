@@ -5,7 +5,20 @@
   flex-direction: column;
 }
 
+.dropzone {
+  display: flex;
+  justify-content: center;
+  border: 1px dashed #dbdbdb;
+  visibility: hidden;
+  padding: 5px;
+}
+
+.dropzone__active {
+  border: 1px dashed #dbdbdb;
+  background: yellow;
+}
+
 .example--is-dragging .dropzone {
-  /* display: block; */
+  /* visibility: visible; */
   visibility: visible;
 }
