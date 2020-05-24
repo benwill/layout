@@ -9,6 +9,7 @@ import {
   changeProperties,
   startDragging,
   stopDragging,
+  moveItem,
 } from "../example/actions";
 
 import Draggable from "./Draggable";
@@ -41,6 +42,13 @@ const ReduxComponent = React.memo(({ componentPath }) => {
     dispatch(startDragging());
   }, [dispatch]);
 
+  const onDrop = useCallback(
+    (sourcePath, targetPath, targetIndex) => {
+      dispatch(moveItem(sourcePath, targetPath, targetIndex));
+    },
+    [dispatch]
+  );
+
   const onStopDrag = useCallback(() => {
     dispatch(stopDragging());
   }, [dispatch]);
@@ -65,6 +73,7 @@ const ReduxComponent = React.memo(({ componentPath }) => {
       {...props}
       // renderArea={renderArea}
       updateProperties={updateProperties}
+      onDrop={onDrop}
       // {...context}
       // renderAreas={(position) => {
       //   return context.renderAreas(areas, position, componentPath);

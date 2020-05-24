@@ -1,6 +1,8 @@
 import React from "react";
+import { useSelector, useDispatch } from "react-redux";
 import { DropTarget } from "react-dnd";
 import styles from "./dropzone.module.css";
+import classNames from "classnames";
 
 const target = {
   canDrop(props, monitor) {
@@ -8,14 +10,12 @@ const target = {
   },
 
   drop(props, monitor, component) {
-    const { componentPath, onDrop, targetIndex, id } = props;
+    const { componentPath, onDrop, targetIndex, areaName } = props;
+
+    const dropZonePath = `${componentPath}.areas.${areaName}`;
 
     const item = monitor.getItem();
-    onDrop(item, {
-      targetIndex,
-      id,
-      componentPath,
-    });
+    onDrop(item.componentPath, dropZonePath, targetIndex);
 
     return { moved: true };
   },
@@ -43,12 +43,17 @@ function DropZone({
   connectDropTarget,
   targetIndex,
   componentPath,
+  areaName,
 }) {
-  const className = isOverCurrent ? styles.dropzone__active : styles.dropzone;
+  const css = classNames("dropzone", {
+    [styles.dropzone__active]: isOverCurrent,
+  });
+
+  const dropZonePath = `${componentPath}.areas.${areaName}`;
 
   return connectDropTarget(
-    <span className={className + " dropzone"}>
-      DZ for {id} {componentPath}
+    <span className={css}>
+      DZ for {dropZonePath} areas
       {targetIndex}
     </span>
   );
