@@ -1,5 +1,8 @@
-import React from "react";
+import React, { useCallback } from "react";
 import { DragSource } from "react-dnd";
+import { useDispatch } from "react-redux";
+
+import { startDragging, stopDragging } from "./redux/actions";
 
 const source = {
   canDrag(props) {
@@ -11,6 +14,7 @@ const source = {
       id: props.id,
       type: props.type,
       componentPath: props.componentPath,
+      props: props.props,
     };
   },
   endDrag: (props) => {
@@ -28,7 +32,7 @@ function collect(connect, monitor) {
   };
 }
 
-const Widget = DragSource(
+const Drag = DragSource(
   "A",
   source,
   collect
@@ -36,4 +40,28 @@ const Widget = DragSource(
   return connectDragSource(<div>{children}</div>);
 });
 
-export default Widget;
+const Draggable = ({ children, type, componentPath, props }) => {
+  const dispatch = useDispatch();
+
+  const onStartDrag = useCallback(() => {
+    dispatch(startDragging());
+  }, [dispatch]);
+
+  const onStopDrag = useCallback(() => {
+    dispatch(stopDragging());
+  }, [dispatch]);
+
+  return (
+    <Drag
+      onStartDrag={onStartDrag}
+      onStopDrag={onStopDrag}
+      type={type}
+      componentPath={componentPath}
+      props={props}
+    >
+      {children}
+    </Drag>
+  );
+};
+
+export default Draggable;

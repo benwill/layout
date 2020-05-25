@@ -3,12 +3,7 @@ import classNames from "classnames";
 import React, { useCallback } from "react";
 
 import dotProp from "dot-prop-immutable";
-import {
-  changeProperties,
-  startDragging,
-  stopDragging,
-  moveItem,
-} from "./redux/actions";
+import { changeProperties, addItem, moveItem } from "./redux/actions";
 
 import Draggable from "./Draggable";
 import DropZone from "./DropZone";
@@ -16,6 +11,7 @@ import Area from "./Area";
 
 const Component = React.memo(({ componentPath, widgets }) => {
   console.log("RENDERING", componentPath);
+
   const props = useSelector((state) => {
     const comp = dotProp.get(state.layout.config, componentPath);
     return comp.props;
@@ -23,6 +19,10 @@ const Component = React.memo(({ componentPath, widgets }) => {
 
   const type = useSelector((state) => {
     return dotProp.get(state.layout.config, componentPath).type;
+  });
+
+  const canEdit = useSelector((state) => {
+    return state.layout.canEdit;
   });
 
   const dispatch = useDispatch();
@@ -34,23 +34,20 @@ const Component = React.memo(({ componentPath, widgets }) => {
     [componentPath, dispatch]
   );
 
-  const onStartDrag = useCallback(() => {
-    dispatch(startDragging());
-  }, [dispatch]);
-
   const onDrop = useCallback(
-    (sourcePath, targetPath, targetIndex) => {
-      dispatch(moveItem(sourcePath, targetPath, targetIndex));
+    (source, target, isMove) => {
+      if (isMove) {
+        dispatch(moveItem(source, target));
+      } else {
+        dispatch(addItem(source, target));
+      }
     },
     [dispatch]
   );
 
-  const onStopDrag = useCallback(() => {
-    dispatch(stopDragging());
-  }, [dispatch]);
-
   const renderDropZone = useCallback(
     (areaName, targetIndex) => {
+      if (!canEdit) return null;
       return (
         <DropZone
           componentPath={componentPath}
@@ -60,7 +57,7 @@ const Component = React.memo(({ componentPath, widgets }) => {
         />
       );
     },
-    [onDrop, componentPath]
+    [onDrop, componentPath, canEdit]
   );
 
   const renderArea = useCallback(
@@ -79,7 +76,7 @@ const Component = React.memo(({ componentPath, widgets }) => {
   const { component: ReactComponent, canDrag } = widgets[type];
 
   const css = classNames("component", `component__${type}`, {
-    "component--draggable": canDrag,
+    "component--draggable": canDrag && canEdit,
   });
 
   const component = (
@@ -94,13 +91,8 @@ const Component = React.memo(({ componentPath, widgets }) => {
     </div>
   );
 
-  return canDrag ? (
-    <Draggable
-      type={type}
-      componentPath={componentPath}
-      onStartDrag={onStartDrag}
-      onStopDrag={onStopDrag}
-    >
+  return canDrag && canEdit ? (
+    <Draggable type={type} componentPath={componentPath}>
       {component}
     </Draggable>
   ) : (

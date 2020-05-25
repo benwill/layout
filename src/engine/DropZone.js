@@ -10,10 +10,24 @@ const target = {
   drop(props, monitor, component) {
     const { componentPath, onDrop, targetIndex, areaName } = props;
 
-    const dropZonePath = `${componentPath}.areas.${areaName}`;
+    const targetPath = `${componentPath}.areas.${areaName}`;
 
     const item = monitor.getItem();
-    onDrop(item.componentPath, dropZonePath, targetIndex);
+
+    const isMove = !!item.componentPath;
+
+    onDrop(
+      {
+        sourcePath: item.componentPath,
+        type: item.type,
+        props: item.props,
+      },
+      {
+        targetPath,
+        targetIndex,
+      },
+      isMove
+    );
 
     return { moved: true };
   },

@@ -1,18 +1,34 @@
 import { createReducer } from "@reduxjs/toolkit";
 import dotProp from "dot-prop-immutable";
+import { combineReducers } from "redux";
 
 import {
   changeProperties,
   startDragging,
   stopDragging,
   moveItem,
+  addItem,
   setConfig,
 } from "./actions";
+import shortid from "shortid";
 
 const initialState = {
   initialised: false,
   config: { root: {} },
   isDragging: false,
+};
+
+const addItemToDraft = (draft, targetPath, targetIndex, item) => {
+  // Find target list
+  const items = dotProp.get(draft.config, targetPath);
+
+  // Target position
+  const index = targetIndex === undefined ? items.length : targetIndex;
+
+  const newItems = [...items.slice(0, index), item, ...items.slice(index)];
+
+  // Add item to target list
+  return dotProp.set(draft.config, targetPath, newItems);
 };
 
 const layout = createReducer(initialState, {
@@ -28,7 +44,8 @@ const layout = createReducer(initialState, {
     });
   },
   [setConfig]: (draft, action) => {
-    draft.config = action.payload;
+    draft.config = action.payload.config;
+    draft.canEdit = action.payload.canEdit;
     draft.initialised = true;
   },
   [startDragging]: (draft) => {
@@ -37,31 +54,44 @@ const layout = createReducer(initialState, {
   [stopDragging]: (draft) => {
     draft.isDragging = false;
   },
+  [addItem]: (draft, action) => {
+    const { source, target } = action.payload;
+
+    const { targetPath, targetIndex } = target;
+    const { type, props } = source;
+
+    const newItem = {
+      areas: {
+        main: [],
+      },
+      id: shortid.generate(),
+      type,
+      props,
+    };
+
+    // Add into list
+    draft.config = addItemToDraft(draft, targetPath, targetIndex, newItem);
+  },
   [moveItem]: (draft, action) => {
-    const { sourcePath, targetPath, targetIndex } = action.payload;
+    const { source, target } = action.payload;
+
+    const { targetPath, targetIndex } = target;
+
     // Find source
-    const itemToMove = dotProp.get(draft.config, sourcePath);
+    const itemToMove = dotProp.get(draft.config, source.sourcePath);
 
-    // Find target list
-    const items = dotProp.get(draft.config, targetPath);
-
-    // Target position
-    const index = targetIndex === undefined ? items.length : targetIndex;
-
-    const newItems = [
-      ...items.slice(0, index),
-      itemToMove,
-      ...items.slice(index),
-    ];
-
-    // Add item to target list
-    let newConfig = dotProp.set(draft.config, targetPath, newItems);
+    // Add into list
+    let newConfig = addItemToDraft(draft, targetPath, targetIndex, itemToMove);
 
     // Remove source
-    newConfig = dotProp.delete(newConfig, sourcePath);
+    newConfig = dotProp.delete(newConfig, source.sourcePath);
 
     draft.config = newConfig;
   },
 });
 
-export default layout;
+const rootReducer = combineReducers({
+  layout,
+});
+
+export default rootReducer;

@@ -6,17 +6,18 @@ import Component from "./Component";
 
 import { setConfig } from "./redux/actions";
 
-const LayoutEngine = ({ initialConfig, widgets }) => {
+const LayoutEngine = ({ initialConfig, widgets, canEdit }) => {
   const isDragging = useSelector((state) => state.layout.isDragging);
   const initialised = useSelector((state) => state.layout.initialised);
+
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(setConfig(initialConfig));
-  }, [dispatch, initialConfig]);
+    dispatch(setConfig(initialConfig, canEdit));
+  }, [dispatch, initialConfig, canEdit]);
 
-  const css = className("example", {
-    "example--is-dragging": isDragging,
+  const css = className("layout", {
+    "layout--is-dragging": isDragging,
   });
 
   if (!initialised) return null;

@@ -2,7 +2,10 @@ import React from "react";
 
 import { Provider } from "react-redux";
 import configureStore from "./redux/configureStore";
-import LayoutEngine from "./LayoutEngine";
+import Layout from "./LayoutEngine";
+import Draggable from "./Draggable";
+
+import "./layout.css";
 
 // https://redux.js.org/recipes/isolating-redux-sub-apps
 class LayoutProvider extends React.Component {
@@ -12,13 +15,8 @@ class LayoutProvider extends React.Component {
   }
 
   render() {
-    const { initialConfig, widgets } = this.props;
-    return (
-      <Provider store={this.store}>
-        <LayoutEngine initialConfig={initialConfig} widgets={widgets} />
-      </Provider>
-    );
+    return <Provider store={this.store}>{this.props.children}</Provider>;
   }
 }
 
-export default LayoutProvider;
+export { LayoutProvider, Layout, Draggable };

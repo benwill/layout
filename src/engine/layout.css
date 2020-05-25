@@ -1,0 +1,33 @@
+/* DROP ZONE STYLES */
+.dropzone {
+  display: flex;
+  justify-content: center;
+  border: 1px dashed #dbdbdb;
+  visibility: hidden;
+  padding: 5px;
+}
+
+.dropzone__active {
+  border: 1px dashed #dbdbdb;
+  background: yellow;
+}
+
+/* COMPONENT WRAPPER */
+.component {
+  display: flex;
+  flex: 1;
+}
+
+.component--draggable:hover {
+  cursor: move;
+}
+
+/* Layout */
+.layout {
+  display: flex;
+  flex: 1;
+}
+
+.layout--is-dragging .dropzone {
+  visibility: visible;
+}

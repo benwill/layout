@@ -10,26 +10,31 @@
   visibility: visible;
 }
 
-/* DROP ZONE STYLES */
-.dropzone {
-  display: flex;
-  justify-content: center;
-  border: 1px dashed #dbdbdb;
-  visibility: hidden;
-  padding: 5px;
-}
-
-.dropzone__active {
-  border: 1px dashed #dbdbdb;
-  background: yellow;
-}
-
-/* COMPONENT WRAPPER */
-.component {
+/* Custom styles */
+.example {
   display: flex;
   flex: 1;
 }
 
-.component--draggable:hover {
-  cursor: move;
+.example__header {
+  border-bottom: 1px solid red;
+  height: 50px;
+}
+
+.example__body {
+  flex: 1;
+  display: flex;
+}
+
+.example__body__preview {
+  flex: 1;
+  display: flex;
+  margin: 20px;
+  border: 1px solid #dbdbdb;
+}
+
+.example__body__toolbox {
+  flex: 0 0 350px;
+  display: flex;
+  border-left: 1px solid red;
 }
