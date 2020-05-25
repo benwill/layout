@@ -1,22 +1,20 @@
 import { useSelector, useDispatch } from "react-redux";
 import classNames from "classnames";
-
 import React, { useCallback } from "react";
 
-import widgets from "./widgets";
 import dotProp from "dot-prop-immutable";
 import {
   changeProperties,
   startDragging,
   stopDragging,
   moveItem,
-} from "../example/actions";
+} from "./redux/actions";
 
 import Draggable from "./Draggable";
 import DropZone from "./DropZone";
 import Area from "./Area";
 
-const Component = React.memo(({ componentPath }) => {
+const Component = React.memo(({ componentPath, widgets }) => {
   console.log("RENDERING", componentPath);
   const props = useSelector((state) => {
     const comp = dotProp.get(state.layout.config, componentPath);
@@ -67,27 +65,37 @@ const Component = React.memo(({ componentPath }) => {
 
   const renderArea = useCallback(
     (areaName) => {
-      return <Area componentPath={componentPath} areaName={areaName} />;
+      return (
+        <Area
+          componentPath={componentPath}
+          areaName={areaName}
+          widgets={widgets}
+        />
+      );
     },
-    [componentPath]
+    [componentPath, widgets]
   );
 
   const { component: ReactComponent, canDrag } = widgets[type];
 
+  const css = classNames("component", `component__${type}`, {
+    "component--draggable": canDrag,
+  });
+
   const component = (
-    <ReactComponent
-      {...props}
-      // renderArea={renderArea}
-      updateProperties={updateProperties}
-      renderDropZone={renderDropZone}
-      renderArea={renderArea}
-      canDrag={canDrag}
-    />
+    <div className={css}>
+      <ReactComponent
+        {...props}
+        updateProperties={updateProperties}
+        renderDropZone={renderDropZone}
+        renderArea={renderArea}
+        canDrag={canDrag}
+      />
+    </div>
   );
 
   return canDrag ? (
     <Draggable
-      //   id={id}
       type={type}
       componentPath={componentPath}
       onStartDrag={onStartDrag}

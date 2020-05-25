@@ -11,6 +11,11 @@ export const changeProperties = createAction(
 
 export const startDragging = createAction("layout/startDragging");
 export const stopDragging = createAction("layout/stopDragging");
+export const setConfig = createAction("layout/setConfig", (config) => {
+  return {
+    payload: config,
+  };
+});
 
 export const moveItem = createAction(
   "layout/moveItem",

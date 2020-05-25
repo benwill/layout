@@ -23,3 +23,13 @@
   border: 1px dashed #dbdbdb;
   background: yellow;
 }
+
+/* COMPONENT WRAPPER */
+.component {
+  display: flex;
+  flex: 1;
+}
+
+.component--draggable:hover {
+  cursor: move;
+}
