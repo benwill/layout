@@ -1,5 +1,5 @@
 import { combineReducers } from "redux";
-import { reducer as layout } from "../engine";
+import layout from "./reducer";
 
 const rootReducer = combineReducers({
   layout,
