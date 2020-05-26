@@ -1,6 +1,8 @@
 ### In Progress
 
-- How to delete a component?
+- How to delete a component? (Maybe just drag into a bin for time being?)
+- Build some better examples:
+- eg.. page, with rhp and sample charts
 
 ### Todos
 
