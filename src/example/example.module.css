@@ -1,0 +1,12 @@
+/* WRAPPING LAYOUT */
+.example {
+  flex: 1;
+  display: flex;
+  overflow: hidden;
+  flex-direction: column;
+}
+
+.example__body {
+  flex: 1;
+  display: flex;
+}

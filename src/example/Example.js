@@ -1,53 +1,29 @@
-import React, { useState } from "react";
+import React, { useState, useCallback } from "react";
 
-import { Layout, LayoutProvider, Draggable } from "../engine";
+import { LayoutProvider } from "../engine";
 
-// Own config
-import initial from "./initial";
-import widgets from "./widgets"; // todo: some kind of initialisation?
+// Layout components
+import Header from "./components/Header";
+import Toolbox from "./components/Toolbox";
+import Preview from "./components/Preview";
 
-import "./example.css";
+import styles from "./example.module.css";
 
 function Example() {
   const [canEdit, setCanEdit] = useState(true);
 
+  const onToggle = useCallback(() => {
+    setCanEdit(!canEdit);
+  }, [canEdit, setCanEdit]);
+
   return (
-    <div className="example">
+    <div className={styles.example}>
       <LayoutProvider>
-        <div className="example__header">
-          <button onClick={() => setCanEdit(!canEdit)}>Toggle edit mode</button>
-        </div>
+        <Header onToggle={onToggle} isDesignMode={canEdit} />
 
-        <div className="example__body">
-          <div className="example__body__preview">
-            <Layout
-              initialConfig={initial}
-              widgets={widgets}
-              canEdit={canEdit}
-            />
-          </div>
-
-          {canEdit && (
-            <div className="example__body__toolbox">
-              Toolbox
-              <Draggable
-                type="TEXT"
-                props={{
-                  value: "h2344",
-                }}
-              >
-                <div>Add text</div>
-              </Draggable>
-              <Draggable
-                type="SECTION"
-                props={{
-                  title: "new section",
-                }}
-              >
-                <div>Add section</div>
-              </Draggable>
-            </div>
-          )}
+        <div className={styles.example__body}>
+          <Preview canEdit={canEdit} />
+          {canEdit && <Toolbox />}
         </div>
       </LayoutProvider>
     </div>
