@@ -4,4 +4,9 @@
   flex: 1;
   display: flex;
   border: 2px solid #dbdbdb;
+  margin: 5px;
+}
+
+.section__title {
+  font-weight: bold;
 }

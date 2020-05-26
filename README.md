@@ -1,8 +1,6 @@
 ### In Progress
 
-- Runtime vs design mode - in progress
-- How to add components? - hard code some decent examples (e.g. a chart)
-- How to set up 'areas' data sensibly, so it doesnt break!
+- How to delete a component?
 
 ### Todos
 
@@ -14,3 +12,7 @@
 
 - Initialize widgets, in a single ton, whats a good pattern for this, rather than relying on props down the chain (Possibly some kind of initConfig from the root?)
 - Look at using redux as a 'library' hide away the redux implementation? / or inject as middleware
+
+# Fancy stuff
+
+- Certain widgets only support [x,y,z] to drop

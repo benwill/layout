@@ -2,7 +2,14 @@
   flex: 0 0 350px;
   flex-direction: column;
   display: flex;
-  border-left: 2px solid #3273dc;
+  border-left: 3px solid #3273dc;
   padding: 20px;
   background: white;
+}
+
+.toolbox__list__item {
+  padding: 20px;
+  border: 1px solid #3273dc;
+  margin-bottom: 10px;
+  cursor: move;
 }

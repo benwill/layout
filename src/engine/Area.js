@@ -12,6 +12,10 @@ const Area = ({ componentPath, areaName, widgets }) => {
       `${componentPath}.areas.${areaName}`
     );
 
+    if (components === undefined) {
+      return 0;
+    }
+
     // TODO: if not an array, throw an error, badly named area
     return components.length;
   });

@@ -1,12 +1,16 @@
 import React from "react";
 
-function Text({ value, updateProperties }) {
+function Text({ value, updateProperties, canEdit }) {
   return (
     <div>
-      <textarea
-        value={value}
-        onChange={(x) => updateProperties({ value: x.target.value })}
-      />
+      {canEdit ? (
+        <textarea
+          value={value}
+          onChange={(x) => updateProperties({ value: x.target.value })}
+        />
+      ) : (
+        <span>{value}</span>
+      )}
     </div>
   );
 }

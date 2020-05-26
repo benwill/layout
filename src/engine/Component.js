@@ -83,6 +83,7 @@ const Component = React.memo(({ componentPath, widgets }) => {
     <div className={css}>
       <ReactComponent
         {...props}
+        canEdit={canEdit}
         updateProperties={updateProperties}
         renderDropZone={renderDropZone}
         renderArea={renderArea}

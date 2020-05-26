@@ -5,7 +5,7 @@ import configureStore from "./redux/configureStore";
 import Layout from "./LayoutEngine";
 import Draggable from "./Draggable";
 
-import "./layout.css";
+import "./index.css";
 
 // https://redux.js.org/recipes/isolating-redux-sub-apps
 class LayoutProvider extends React.Component {
