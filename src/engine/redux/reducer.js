@@ -55,6 +55,25 @@ const layout = createReducer(initialState, {
   [stopDragging]: (draft) => {
     draft.isDragging = false;
   },
+  [moveItem]: (draft, action) => {
+    const { source, target } = action.payload;
+
+    const { targetPath, targetIndex } = target;
+
+    // Don't let widgets be 'moved' into themselves
+    if (targetPath.includes(source.sourcePath)) return;
+
+    // Find source
+    const itemToMove = dotProp.get(draft.config, source.sourcePath);
+
+    // Add into list
+    let newConfig = addItemToDraft(draft, targetPath, targetIndex, itemToMove);
+
+    // Remove source
+    newConfig = dotProp.delete(newConfig, source.sourcePath);
+
+    draft.config = newConfig;
+  },
   [addItem]: (draft, action) => {
     const { source, target } = action.payload;
 

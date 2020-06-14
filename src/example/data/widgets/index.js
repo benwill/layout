@@ -3,8 +3,14 @@ import Sidebar from "./Sidebar";
 import Toolbar from "./Toolbar";
 import Text from "./Text";
 import Section from "./Section";
+import HeaderBody from "./HeaderBody";
 
 export default {
+  HeaderBody: {
+    component: HeaderBody,
+    canDrag: false,
+    icon: "fa-square",
+  },
   LayoutWithToolbar: {
     component: LayoutWithToolbar,
     canDrag: false,

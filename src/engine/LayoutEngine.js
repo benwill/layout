@@ -12,7 +12,10 @@ const LayoutEngine = ({ initialConfig, widgets, canEdit }) => {
 
   const dispatch = useDispatch();
 
+  console.log(initialConfig);
+
   useEffect(() => {
+    console.log("setting config", initialConfig);
     dispatch(setConfig(initialConfig, canEdit));
   }, [dispatch, initialConfig, canEdit]);
 

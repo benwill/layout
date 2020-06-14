@@ -1,0 +1,19 @@
+.layout {
+  display: flex;
+  flex: 1;
+  overflow: hidden;
+  flex-direction: column;
+}
+
+.layout__top {
+  grid-area: top;
+  display: flex;
+  flex-direction: column;
+  background: #cdcdcd;
+}
+
+.layout__main {
+  flex: 1;
+  padding: 10px;
+  overflow-y: auto;
+}

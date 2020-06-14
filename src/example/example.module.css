@@ -9,4 +9,5 @@
 .example__body {
   flex: 1;
   display: flex;
+  overflow: hidden;
 }
