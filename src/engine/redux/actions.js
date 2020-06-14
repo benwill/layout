@@ -31,3 +31,9 @@ export const addItem = createAction("layout/addItem", (source, target) => {
     payload: { source, target },
   };
 });
+
+export const removeItem = createAction("layout/removeItem", (source) => {
+  return {
+    payload: { source },
+  };
+});

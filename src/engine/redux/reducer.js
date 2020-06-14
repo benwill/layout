@@ -9,6 +9,7 @@ import {
   moveItem,
   addItem,
   setConfig,
+  removeItem,
 } from "./actions";
 import shortid from "shortid";
 
@@ -72,21 +73,9 @@ const layout = createReducer(initialState, {
     // Add into list
     draft.config = addItemToDraft(draft, targetPath, targetIndex, newItem);
   },
-  [moveItem]: (draft, action) => {
-    const { source, target } = action.payload;
-
-    const { targetPath, targetIndex } = target;
-
-    // Find source
-    const itemToMove = dotProp.get(draft.config, source.sourcePath);
-
-    // Add into list
-    let newConfig = addItemToDraft(draft, targetPath, targetIndex, itemToMove);
-
-    // Remove source
-    newConfig = dotProp.delete(newConfig, source.sourcePath);
-
-    draft.config = newConfig;
+  [removeItem]: (draft, action) => {
+    const { source } = action.payload;
+    draft.config = dotProp.delete(draft.config, source.sourcePath);
   },
 });
 

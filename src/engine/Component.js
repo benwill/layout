@@ -3,7 +3,12 @@ import classNames from "classnames";
 import React, { useCallback } from "react";
 
 import dotProp from "dot-prop-immutable";
-import { changeProperties, addItem, moveItem } from "./redux/actions";
+import {
+  changeProperties,
+  addItem,
+  moveItem,
+  removeItem,
+} from "./redux/actions";
 
 import Draggable from "./Draggable";
 import DropZone from "./DropZone";
@@ -45,6 +50,10 @@ const Component = React.memo(({ componentPath, widgets }) => {
     [dispatch]
   );
 
+  const onRemove = useCallback(() => {
+    dispatch(removeItem({ sourcePath: componentPath }));
+  }, [dispatch, componentPath]);
+
   const renderDropZone = useCallback(
     (areaName, targetIndex) => {
       if (!canEdit) return null;
@@ -84,6 +93,7 @@ const Component = React.memo(({ componentPath, widgets }) => {
       <ReactComponent
         {...props}
         canEdit={canEdit}
+        onRemove={onRemove}
         updateProperties={updateProperties}
         renderDropZone={renderDropZone}
         renderArea={renderArea}
