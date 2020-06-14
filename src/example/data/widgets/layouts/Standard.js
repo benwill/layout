@@ -1,8 +1,8 @@
 import React from "react";
 
-import styles from "./layoutWithToolbar.module.css";
+import styles from "./standard.module.css";
 
-function LayoutWithToolbar({ renderArea, renderDropZone }) {
+function Standard({ renderArea, renderDropZone }) {
   return (
     <div className={styles.layout}>
       <div className={styles.layout__top}>
@@ -23,4 +23,4 @@ function LayoutWithToolbar({ renderArea, renderDropZone }) {
   );
 }
 
-export default LayoutWithToolbar;
+export default Standard;

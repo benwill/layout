@@ -1,9 +1,10 @@
-import LayoutWithToolbar from "./LayoutWithToolbar";
-import Sidebar from "./Sidebar";
-import Toolbar from "./Toolbar";
-import Text from "./Text";
-import Section from "./Section";
-import HeaderBody from "./HeaderBody";
+import Standard from "./layouts/Standard";
+import HeaderBody from "./layouts/HeaderBody";
+import Sidebar from "./structure/Sidebar";
+import Toolbar from "./structure/Toolbar";
+import Section from "./structure/Section";
+import SidePanel from "./structure/SidePanel";
+import Text from "./content/Text";
 
 export default {
   HeaderBody: {
@@ -11,14 +12,19 @@ export default {
     canDrag: false,
     icon: "fa-square",
   },
-  LayoutWithToolbar: {
-    component: LayoutWithToolbar,
+  Standard: {
+    component: Standard,
     canDrag: false,
     icon: "fa-square",
   },
   SIDEBAR: {
     component: Sidebar,
     canDrag: false,
+    icon: "fa-square",
+  },
+  SidePanel: {
+    component: SidePanel,
+    canDrag: true,
     icon: "fa-square",
   },
   TOOLBAR: {

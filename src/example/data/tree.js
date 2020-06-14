@@ -3,7 +3,7 @@ import shortid from "shortid";
 export default {
   root: {
     id: shortid.generate(),
-    type: "LayoutWithToolbar",
+    type: "Standard",
     areas: {
       top: [
         {

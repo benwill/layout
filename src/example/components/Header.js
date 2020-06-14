@@ -2,7 +2,7 @@ import React, { useCallback } from "react";
 
 import ModeSwitch from "./ModeSwitch";
 
-function Header({ onToggle, isDesignMode, example, changeExample }) {
+function Header({ onToggle, isDesignMode, changeExample }) {
   const changeToTree = useCallback(() => {
     changeExample("tree");
   }, [changeExample]);

@@ -6,7 +6,7 @@ import Component from "./Component";
 
 import { setConfig } from "./redux/actions";
 
-const LayoutEngine = ({ initialConfig, widgets, canEdit }) => {
+const Layout = ({ initialConfig, widgets, canEdit }) => {
   const isDragging = useSelector((state) => state.layout.isDragging);
   const initialised = useSelector((state) => state.layout.initialised);
 
@@ -32,4 +32,4 @@ const LayoutEngine = ({ initialConfig, widgets, canEdit }) => {
   );
 };
 
-export default LayoutEngine;
+export default Layout;

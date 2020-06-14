@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from "react";
+import React, { useState, useCallback, useRef } from "react";
 
 import { LayoutProvider } from "../engine";
 
@@ -13,21 +13,26 @@ import styles from "./example.module.css";
 import tree from "./data/tree";
 import dashboard from "./data/dashboard";
 
-const examples = {
-  tree,
-  dashboard,
-};
-
 function Example() {
+  const layoutRef = useRef();
+  const [examples, setExamples] = useState({
+    tree,
+    dashboard,
+  });
   const [canEdit, setCanEdit] = useState(true);
-  const [example, setExample] = useState("dashboard");
+  const [example, setExample] = useState("tree");
+  const [focusedWidgetId, setFocusedWidgetId] = useState();
 
   const initialData = examples[example];
 
-  console.log(example, initialData);
   const onToggle = useCallback(() => {
     setCanEdit(!canEdit);
-  }, [canEdit, setCanEdit]);
+    const updatedState = layoutRef.current.getState();
+    setExamples({
+      ...examples,
+      [example]: updatedState,
+    });
+  }, [canEdit, setCanEdit, example, examples, setExamples]);
 
   const changeExample = useCallback(
     (example) => {
@@ -39,7 +44,7 @@ function Example() {
 
   return (
     <div className={styles.example}>
-      <LayoutProvider>
+      <LayoutProvider ref={layoutRef}>
         <Header
           onToggle={onToggle}
           isDesignMode={canEdit}
@@ -48,7 +53,11 @@ function Example() {
         />
 
         <div className={styles.example__body}>
-          <Preview canEdit={canEdit} initialData={initialData} />
+          <Preview
+            canEdit={canEdit}
+            initialData={initialData}
+            onFocus={setFocusedWidgetId}
+          />
           {canEdit && <Toolbox />}
         </div>
       </LayoutProvider>
