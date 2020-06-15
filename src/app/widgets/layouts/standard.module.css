@@ -25,4 +25,5 @@
   flex-direction: column;
   background: #c0c0c0;
   width: 200px;
+  overflow-y: auto;
 }
