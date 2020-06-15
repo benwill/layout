@@ -7,12 +7,12 @@ import { changeExample } from "./redux/actions";
 function Header({ onToggle, isDesignMode }) {
   const dispatch = useDispatch();
 
-  const changeToDesigner = useCallback(() => {
-    dispatch(changeExample("Designer"));
+  const changeToTree = useCallback(() => {
+    dispatch(changeExample("Tree"));
   }, [dispatch]);
 
-  const changeToSimple = useCallback(() => {
-    dispatch(changeExample("Simple"));
+  const changeToDashboard = useCallback(() => {
+    dispatch(changeExample("Dashboard"));
   }, [dispatch]);
 
   return (
@@ -37,11 +37,11 @@ function Header({ onToggle, isDesignMode }) {
               Examples
             </a>
             <div className="navbar-dropdown is-boxed">
-              <a className="navbar-item" href="#/" onClick={changeToDesigner}>
-                Designer
+              <a className="navbar-item" href="#/" onClick={changeToTree}>
+                Tree
               </a>
-              <a className="navbar-item" href="#/" onClick={changeToSimple}>
-                Simple
+              <a className="navbar-item" href="#/" onClick={changeToDashboard}>
+                Dashboard
               </a>
             </div>
           </div>
