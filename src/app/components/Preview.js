@@ -9,9 +9,12 @@ import widgets from "../widgets";
 import styles from "./preview.module.css";
 
 const Preview = ({ canEdit }) => {
+  const onFocus = (a) => {
+    console.log("focused", a);
+  };
   return (
     <div className={styles.preview}>
-      <Layout widgets={widgets} canEdit={canEdit} />
+      <Layout widgets={widgets} canEdit={canEdit} onFocus={onFocus} />
     </div>
   );
 };

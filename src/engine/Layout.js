@@ -3,7 +3,7 @@ import className from "classnames";
 import { useSelector } from "react-redux";
 import Component from "./Component";
 
-const Layout = ({ widgets }) => {
+const Layout = ({ widgets, onFocus }) => {
   const isDragging = useSelector((state) => state.layout.isDragging);
   const initialised = useSelector((state) => state.layout.initialised);
 
@@ -15,7 +15,11 @@ const Layout = ({ widgets }) => {
 
   return (
     <div className={css}>
-      <Component componentPath="root" widgets={widgets}></Component>
+      <Component
+        componentPath="root"
+        widgets={widgets}
+        onFocus={onFocus}
+      ></Component>
     </div>
   );
 };

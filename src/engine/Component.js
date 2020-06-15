@@ -14,7 +14,7 @@ import Draggable from "./Draggable";
 import DropZone from "./DropZone";
 import Area from "./Area";
 
-const Component = React.memo(({ componentPath, widgets }) => {
+const Component = React.memo(({ componentPath, onFocus, widgets }) => {
   console.log("RENDERING", componentPath);
 
   const props = useSelector((state) => {
@@ -31,6 +31,14 @@ const Component = React.memo(({ componentPath, widgets }) => {
   });
 
   const dispatch = useDispatch();
+
+  const onClick = useCallback(
+    (e) => {
+      onFocus(componentPath);
+      e.stopPropagation();
+    },
+    [onFocus, componentPath]
+  );
 
   const updateProperties = useCallback(
     (properties) => {
@@ -73,13 +81,14 @@ const Component = React.memo(({ componentPath, widgets }) => {
     (areaName) => {
       return (
         <Area
+          onFocus={onFocus}
           componentPath={componentPath}
           areaName={areaName}
           widgets={widgets}
         />
       );
     },
-    [componentPath, widgets]
+    [componentPath, widgets, onFocus]
   );
 
   const { component: ReactComponent, canDrag } = widgets[type];
@@ -89,7 +98,7 @@ const Component = React.memo(({ componentPath, widgets }) => {
   });
 
   const component = (
-    <div className={css}>
+    <div className={css} onClick={onClick}>
       <ReactComponent
         {...props}
         canEdit={canEdit}

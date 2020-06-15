@@ -5,7 +5,7 @@ import Component from "./Component";
 
 import dotProp from "dot-prop-immutable";
 
-const Area = ({ componentPath, areaName, widgets }) => {
+const Area = ({ onFocus, componentPath, areaName, widgets }) => {
   const totalComponents = useSelector((state) => {
     const components = dotProp.get(
       state.layout.config,
@@ -26,6 +26,7 @@ const Area = ({ componentPath, areaName, widgets }) => {
         key={index}
         componentPath={`${componentPath}.areas.${areaName}.${index}`}
         widgets={widgets}
+        onFocus={onFocus}
       />
     );
   });
