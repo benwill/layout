@@ -1,6 +1,17 @@
-import React from "react";
+import React, { useCallback } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { toggleEdit } from "../../engine";
 
-const ModeSwitch = ({ isDesignMode, onToggle }) => {
+const ModeSwitch = () => {
+  const dispatch = useDispatch();
+  const isDesignMode = useSelector((state) => {
+    return state.layout.canEdit;
+  });
+
+  const onToggle = useCallback(() => {
+    dispatch(toggleEdit());
+  }, [dispatch]);
+
   const activeCss = "button is-selected is-primary";
   const inActiveCss = "button";
 

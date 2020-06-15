@@ -1,6 +1,5 @@
 import { createReducer } from "@reduxjs/toolkit";
 import dotProp from "dot-prop-immutable";
-import { combineReducers } from "redux";
 
 import {
   changeProperties,
@@ -10,11 +9,13 @@ import {
   addItem,
   setConfig,
   removeItem,
+  toggleEdit,
 } from "./actions";
 import shortid from "shortid";
 
 const initialState = {
   initialised: false,
+  canEdit: false,
   config: { root: {} },
   isDragging: false,
 };
@@ -32,7 +33,7 @@ const addItemToDraft = (draft, targetPath, targetIndex, item) => {
   return dotProp.set(draft.config, targetPath, newItems);
 };
 
-const layout = createReducer(initialState, {
+export default createReducer(initialState, {
   [changeProperties]: (draft, action) => {
     const { componentPath, props } = action.payload;
 
@@ -46,7 +47,6 @@ const layout = createReducer(initialState, {
   },
   [setConfig]: (draft, action) => {
     draft.config = action.payload.config;
-    draft.canEdit = action.payload.canEdit;
     draft.initialised = true;
   },
   [startDragging]: (draft) => {
@@ -54,6 +54,9 @@ const layout = createReducer(initialState, {
   },
   [stopDragging]: (draft) => {
     draft.isDragging = false;
+  },
+  [toggleEdit]: (draft) => {
+    draft.canEdit = !draft.canEdit;
   },
   [moveItem]: (draft, action) => {
     const { source, target } = action.payload;
@@ -97,9 +100,3 @@ const layout = createReducer(initialState, {
     draft.config = dotProp.delete(draft.config, source.sourcePath);
   },
 });
-
-const rootReducer = combineReducers({
-  layout,
-});
-
-export default rootReducer;

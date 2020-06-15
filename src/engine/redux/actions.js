@@ -8,7 +8,7 @@ export const changeProperties = createAction(
     };
   }
 );
-
+export const toggleEdit = createAction("layout/toggleEdit");
 export const startDragging = createAction("layout/startDragging");
 export const stopDragging = createAction("layout/stopDragging");
 export const setConfig = createAction("layout/setConfig", (config, canEdit) => {

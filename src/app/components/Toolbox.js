@@ -3,7 +3,7 @@ import React from "react";
 import { Draggable } from "../../engine";
 import styles from "./toolbox.module.css";
 
-import widgets from "../data/widgets";
+import widgets from "../widgets";
 
 const getFilterableTypes = (widgets) => {
   const keys = Object.keys(widgets);

@@ -1,15 +1,19 @@
 import React, { useCallback } from "react";
+import { useDispatch } from "react-redux";
 
-import ModeSwitch from "./ModeSwitch";
+import ModeSwitch from "./components/ModeSwitch";
+import { changeExample } from "./redux/actions";
 
-function Header({ onToggle, isDesignMode, changeExample }) {
-  const changeToTree = useCallback(() => {
-    changeExample("tree");
-  }, [changeExample]);
+function Header({ onToggle, isDesignMode }) {
+  const dispatch = useDispatch();
 
-  const changeToDashboard = useCallback(() => {
-    changeExample("dashboard");
-  }, [changeExample]);
+  const changeToDesigner = useCallback(() => {
+    dispatch(changeExample("Designer"));
+  }, [dispatch]);
+
+  const changeToSimple = useCallback(() => {
+    dispatch(changeExample("Simple"));
+  }, [dispatch]);
 
   return (
     <nav
@@ -33,11 +37,11 @@ function Header({ onToggle, isDesignMode, changeExample }) {
               Examples
             </a>
             <div className="navbar-dropdown is-boxed">
-              <a className="navbar-item" href="#/" onClick={changeToTree}>
-                Tree
+              <a className="navbar-item" href="#/" onClick={changeToDesigner}>
+                Designer
               </a>
-              <a className="navbar-item" href="#/" onClick={changeToDashboard}>
-                Dashboard
+              <a className="navbar-item" href="#/" onClick={changeToSimple}>
+                Simple
               </a>
             </div>
           </div>
