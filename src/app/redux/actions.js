@@ -10,3 +10,11 @@ export const changeExample = createAction(
     };
   }
 );
+
+export const editCard = createAction("example/editCard", (path) => {
+  return {
+    payload: {
+      path,
+    },
+  };
+});

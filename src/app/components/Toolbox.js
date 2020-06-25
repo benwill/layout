@@ -4,6 +4,7 @@ import { Draggable } from "../../engine";
 import styles from "./toolbox.module.css";
 
 import widgets from "../widgets";
+import { useSelector } from "react-redux";
 
 const getFilterableTypes = (widgets) => {
   const keys = Object.keys(widgets);
@@ -33,7 +34,6 @@ const Toolbox = () => {
   return (
     <div className={styles.toolbox}>
       <h2 className="title is-4">Toolbox</h2>
-
       <ul>
         {supportedWidgets.map((x) => {
           return (
