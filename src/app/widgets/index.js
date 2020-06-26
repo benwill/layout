@@ -6,6 +6,7 @@ import Section from "./structure/Section";
 import SidePanel from "./structure/SidePanel";
 import Text from "./content/Text";
 import EditText from "./content/EditText";
+import Chart from "./content/Chart";
 
 export default {
   HeaderBody: {
@@ -32,6 +33,11 @@ export default {
     component: Toolbar,
     canDrag: false,
     icon: "fa-heading",
+  },
+  CHART: {
+    component: Chart,
+    canDrag: true,
+    icon: "fa-chart-bar",
   },
   TEXT: {
     component: Text,

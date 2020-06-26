@@ -1,0 +1,11 @@
+.chart {
+  display: flex;
+  flex: 1;
+  height: 250px;
+  overflow: hidden;
+}
+
+.chart__box {
+  flex: 1;
+  display: flex;
+}
