@@ -2,7 +2,7 @@ import React, { useCallback } from "react";
 import { useDispatch } from "react-redux";
 
 import { Layout } from "../../engine";
-import { editCard } from "../redux/actions";
+import { focusCard } from "../redux/actions";
 
 // Own config
 // TODO: Part of initialisation
@@ -15,11 +15,9 @@ const Preview = React.memo(({ canEdit }) => {
 
   const onFocus = useCallback(
     (path) => {
-      if (canEdit) {
-        dispatch(editCard(path));
-      }
+      dispatch(focusCard(path));
     },
-    [canEdit, dispatch]
+    [dispatch]
   );
 
   return (

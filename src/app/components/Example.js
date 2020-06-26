@@ -17,7 +17,7 @@ function Example({ canEdit }) {
         <div className={styles.example__body}>
           <Preview canEdit={canEdit} />
           {canEdit && !editPath && <Toolbox />}
-          {canEdit && editPath && <EditWidget />}
+          {canEdit && editPath && <EditWidget editPath={editPath} />}
         </div>
       </div>
     </>

@@ -5,6 +5,7 @@ import Toolbar from "./structure/Toolbar";
 import Section from "./structure/Section";
 import SidePanel from "./structure/SidePanel";
 import Text from "./content/Text";
+import EditText from "./content/EditText";
 
 export default {
   HeaderBody: {
@@ -34,6 +35,7 @@ export default {
   },
   TEXT: {
     component: Text,
+    edit: EditText,
     canDrag: true,
     icon: "fa-font",
     defaultProps: { value: "Some text" },

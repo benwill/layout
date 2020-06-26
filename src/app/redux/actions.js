@@ -11,7 +11,7 @@ export const changeExample = createAction(
   }
 );
 
-export const editCard = createAction("example/editCard", (path) => {
+export const focusCard = createAction("example/focusCard", (path) => {
   return {
     payload: {
       path,
