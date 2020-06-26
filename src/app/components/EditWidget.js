@@ -7,6 +7,7 @@ import widgets from "../widgets";
 import { useSelector, useDispatch } from "react-redux";
 
 import { changeProperties } from "../../engine";
+import { focusCard } from "../redux/actions";
 
 const EditWidget = ({ editPath }) => {
   const dispatch = useDispatch();
@@ -34,9 +35,21 @@ const EditWidget = ({ editPath }) => {
 
   const EditComponent = !componentType.edit ? null : componentType.edit;
 
+  const onFocus = useCallback(
+    (path) => {
+      dispatch(focusCard(undefined));
+    },
+    [dispatch]
+  );
+
   return (
     <div className={styles.edit}>
-      <h2 className="title is-4">Edit Widget</h2>
+      <h2 className="title is-4">
+        Edit Widget{" "}
+        <span className="icon icon-medium" onClick={onFocus}>
+          <i className="fas fa-times"></i>
+        </span>
+      </h2>
       {editPath}
 
       <hr />
