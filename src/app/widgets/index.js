@@ -7,12 +7,16 @@ import SidePanel from "./structure/SidePanel";
 import Text from "./content/Text";
 import EditText from "./content/EditText";
 import Chart from "./content/Chart";
+import EditChart from "./content/EditChart";
+import Jumbotron from "./content/Jumbotron";
+import Row from "./layouts/Row";
 
 export default {
   HeaderBody: {
     component: HeaderBody,
     canDrag: false,
     icon: "fa-square",
+    supportedAreas: ["top", "main"],
   },
   Standard: {
     component: Standard,
@@ -28,16 +32,19 @@ export default {
     component: SidePanel,
     canDrag: true,
     icon: "fa-square",
+    supportedAreas: ["main"],
   },
   TOOLBAR: {
     component: Toolbar,
     canDrag: false,
     icon: "fa-heading",
+    supportedAreas: ["main"],
   },
   CHART: {
     component: Chart,
     canDrag: true,
     icon: "fa-chart-bar",
+    edit: EditChart,
   },
   TEXT: {
     component: Text,
@@ -51,5 +58,19 @@ export default {
     canDrag: true,
     icon: "fa-square",
     defaultProps: { title: "new section" },
+    supportedAreas: ["main"],
+  },
+  JUMBOTRON: {
+    component: Jumbotron,
+    canDrag: true,
+    icon: "fa-font",
+    defaultProps: { title: "Title", subtitle: "Sub title" },
+  },
+  ROW: {
+    component: Row,
+    canDrag: true,
+    icon: "fa-font",
+    defaultProps: { height: 300 },
+    supportedAreas: ["left", "middle", "right"],
   },
 };

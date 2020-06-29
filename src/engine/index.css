@@ -31,3 +31,8 @@
 .layout--is-dragging .dropzone {
   visibility: visible;
 }
+
+.draggable {
+  display: flex;
+  flex: 1;
+}

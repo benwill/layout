@@ -1,8 +1,11 @@
 ### In Progress
 
-- Ability to edit props
 - Build some better examples:
 - eg.. page, with rhp and sample charts
+- Add KPIs + image examples
+- Make a decent looking page
+- Think about 'GROWING' content (Charts, images) vs inline content
+- - Can specify supported drops
 
 ### Todos
 

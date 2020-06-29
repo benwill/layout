@@ -15,6 +15,7 @@ const source = {
       type: props.type,
       componentPath: props.componentPath,
       props: props.props,
+      areas: props.areas,
     };
   },
   endDrag: (props) => {
@@ -37,10 +38,10 @@ const Drag = DragSource(
   source,
   collect
 )(({ connectDragSource, children }) => {
-  return connectDragSource(<div>{children}</div>);
+  return connectDragSource(<div className="draggable">{children}</div>);
 });
 
-const Draggable = ({ children, type, componentPath, props }) => {
+const Draggable = ({ children, type, areas, componentPath, props }) => {
   const dispatch = useDispatch();
 
   const onStartDrag = useCallback(() => {
@@ -58,6 +59,7 @@ const Draggable = ({ children, type, componentPath, props }) => {
       type={type}
       componentPath={componentPath}
       props={props}
+      areas={areas}
     >
       {children}
     </Drag>

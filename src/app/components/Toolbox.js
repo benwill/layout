@@ -4,7 +4,6 @@ import { Draggable } from "../../engine";
 import styles from "./toolbox.module.css";
 
 import widgets from "../widgets";
-import { useSelector } from "react-redux";
 
 const getFilterableTypes = (widgets) => {
   const keys = Object.keys(widgets);
@@ -15,11 +14,17 @@ const getFilterableTypes = (widgets) => {
     if (widgets[x].canDrag) {
       const settings = widgets[x];
 
-      const { defaultProps, icon } = settings;
+      const { defaultProps, supportedAreas = [], icon } = settings;
+
+      var areas = supportedAreas.reduce((map, area) => {
+        map[area] = [];
+        return map;
+      }, {});
 
       results.push({
         type: x,
         defaultProps: defaultProps ? defaultProps : {},
+        areas,
         icon,
       });
     }
@@ -37,7 +42,12 @@ const Toolbox = () => {
       <ul>
         {supportedWidgets.map((x) => {
           return (
-            <Draggable key={x.type} type={x.type} props={x.defaultProps}>
+            <Draggable
+              key={x.type}
+              type={x.type}
+              areas={x.areas}
+              props={x.defaultProps}
+            >
               <li className={styles.toolbox__list__item}>
                 <div>
                   <span className="icon icon-medium">

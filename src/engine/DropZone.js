@@ -21,6 +21,7 @@ const target = {
         sourcePath: item.componentPath,
         type: item.type,
         props: item.props,
+        areas: item.areas,
       },
       {
         targetPath,
@@ -48,7 +49,7 @@ function collect(connect, monitor) {
 
 function DropZone({ isOverCurrent, connectDropTarget, targetIndex }) {
   const css = classNames("dropzone", {
-    dropzone__active: isOverCurrent,
+    dropzone__active: true, //isOverCurrent,
   });
 
   return connectDropTarget(

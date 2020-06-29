@@ -81,12 +81,10 @@ export default createReducer(initialState, {
     const { source, target } = action.payload;
 
     const { targetPath, targetIndex } = target;
-    const { type, props } = source;
+    const { type, props, areas } = source;
 
     const newItem = {
-      areas: {
-        main: [],
-      },
+      areas,
       id: shortid.generate(),
       type,
       props,

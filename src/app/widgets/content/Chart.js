@@ -10,7 +10,8 @@ import styles from "./chart.module.css";
 // init the module
 highchartsSankey(Highcharts);
 
-function Chart({ type = "Sankey" }) {
+function Chart({ type = "Line" }) {
+
   const [dimensions, setDimensions] = useState({
     width: undefined,
     height: undefined,
@@ -24,6 +25,8 @@ function Chart({ type = "Sankey" }) {
       width: dimensions.width,
     },
   };
+
+  console.log(options);
 
   const onResize = useCallback(
     (contentRect) => {
