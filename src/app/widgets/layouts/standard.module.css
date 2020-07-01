@@ -1,8 +1,8 @@
 .layout {
   display: grid;
   flex: 1;
-  grid-template-areas: "top right" "main right";
-  grid-template-columns: 1fr auto;
+  grid-template-areas: "left top right" "left main right";
+  grid-template-columns: auto 1fr auto;
   grid-template-rows: auto 1fr;
 }
 
@@ -20,10 +20,21 @@
 }
 
 .layout__right {
+  padding: 5px;
   grid-area: right;
   display: flex;
   flex-direction: column;
   background: #c0c0c0;
-  width: 200px;
+  width: 300px;
+  overflow-y: auto;
+}
+
+.layout__left {
+  padding: 5px;
+  grid-area: left;
+  display: flex;
+  flex-direction: column;
+  background: #c0c0c0;
+  width: 300px;
   overflow-y: auto;
 }

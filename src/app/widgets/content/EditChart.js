@@ -13,7 +13,7 @@ function EditChart({ props, updateProperties }) {
   return (
     <div>
       <select onChange={changeValue} value={props.type}>
-        <option value="Sankey">Sankey Chart</option>
+        <option value="Pie">Pie Chart</option>
         <option value="Line">Line Chart</option>
       </select>
     </div>

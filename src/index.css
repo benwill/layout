@@ -11,9 +11,16 @@ body {
 html,
 body {
   height: 100%;
-  margin: 0
+  margin: 0;
 }
 
 #root {
   height: 100%;
+}
+
+/* Bit off a hack - be a nicer way to do this */
+.right-panel-overrides > .component,
+.right-panel-overrides > .draggable {
+  flex: 0;
+  margin-bottom: 5px;
 }

@@ -1,9 +1,0 @@
-.sidepanel {
-  display: flex;
-  flex: 1;
-  flex-direction: column;
-}
-
-.sidepanel--collapsed {
-  flex: 0 0 0;
-}

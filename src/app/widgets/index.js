@@ -1,9 +1,6 @@
 import Standard from "./layouts/Standard";
 import HeaderBody from "./layouts/HeaderBody";
-import Sidebar from "./structure/Sidebar";
-import Toolbar from "./structure/Toolbar";
-import Section from "./structure/Section";
-import SidePanel from "./structure/SidePanel";
+import Section from "./layouts/Section";
 import Text from "./content/Text";
 import EditText from "./content/EditText";
 import Chart from "./content/Chart";
@@ -15,6 +12,7 @@ import EditRow from "./layouts/EditRow";
 import EditBox from "./layouts/EditBox";
 import IMAGE from "./content/Image";
 import EditImage from "./content/EditImage";
+import EditStandard from "./layouts/EditStandard";
 
 export default {
   HeaderBody: {
@@ -25,25 +23,13 @@ export default {
   },
   Standard: {
     component: Standard,
+    edit: EditStandard,
     canDrag: false,
     icon: "fa-square",
-  },
-  SIDEBAR: {
-    component: Sidebar,
-    canDrag: false,
-    icon: "fa-square",
-  },
-  SidePanel: {
-    component: SidePanel,
-    canDrag: true,
-    icon: "fa-square",
-    supportedAreas: ["main"],
-  },
-  TOOLBAR: {
-    component: Toolbar,
-    canDrag: false,
-    icon: "fa-heading",
-    supportedAreas: ["main"],
+    defaultProps: {
+      sidePanelStyle: "right",
+    },
+    supportedAreas: ["main", "top", "sidepanel"],
   },
   CHART: {
     component: Chart,

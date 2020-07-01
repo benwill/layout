@@ -38,7 +38,7 @@ export default {
                 id: shortid.generate(),
                 type: "BOX",
                 props: {
-                  height: 300,
+                  height: "100%",
                   background: "has-background-info",
                 },
               },
@@ -60,7 +60,7 @@ export default {
                 id: shortid.generate(),
                 type: "BOX",
                 props: {
-                  height: 300,
+                  height: "100%",
                   background: "has-background-successs",
                 },
               },
@@ -83,7 +83,7 @@ export default {
 
                 type: "BOX",
                 props: {
-                  height: 300,
+                  height: "100%",
                   background: "has-background-danger",
                 },
               },
@@ -105,7 +105,7 @@ export default {
                 id: shortid.generate(),
                 type: "BOX",
                 props: {
-                  height: 300,
+                  height: "100%",
                   background: "has-background-warning",
                 },
               },
@@ -127,7 +127,9 @@ export default {
                       id: shortid.generate(),
 
                       type: "CHART",
-                      props: {},
+                      props: {
+                        type: "Line",
+                      },
                     },
                   ],
                 },

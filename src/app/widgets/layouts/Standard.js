@@ -2,7 +2,10 @@ import React from "react";
 
 import styles from "./standard.module.css";
 
-function Standard({ renderArea, renderDropZone }) {
+function Standard({ renderArea, renderDropZone, sidePanelStyle }) {
+  const sidePanelStyles =
+    sidePanelStyle === "right" ? styles.layout__right : styles.layout__left;
+
   return (
     <div className={styles.layout}>
       <div className={styles.layout__top}>
@@ -15,10 +18,12 @@ function Standard({ renderArea, renderDropZone }) {
         {renderDropZone("main")}
       </div>
 
-      <div className={styles.layout__right}>
-        {renderArea("right")}
-        {renderDropZone("right")}
-      </div>
+      {sidePanelStyle !== "" ? (
+        <div className={`${sidePanelStyles} right-panel-overrides`}>
+          {renderArea("sidepanel")}
+          {renderDropZone("sidepanel")}
+        </div>
+      ) : null}
     </div>
   );
 }

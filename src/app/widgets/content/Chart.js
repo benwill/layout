@@ -10,8 +10,7 @@ import styles from "./chart.module.css";
 // init the module
 highchartsSankey(Highcharts);
 
-function Chart({ type = "Line" }) {
-
+function Chart({ type = "Pie" }) {
   const [dimensions, setDimensions] = useState({
     width: undefined,
     height: undefined,
@@ -25,8 +24,6 @@ function Chart({ type = "Line" }) {
       width: dimensions.width,
     },
   };
-
-  console.log(options);
 
   const onResize = useCallback(
     (contentRect) => {
@@ -45,10 +42,7 @@ function Chart({ type = "Line" }) {
             ) : null}
           </div>
         )}
-        {/* {dimensions.w && dimensions.h ? <span>done</span> : "loading"} */}
       </Measure>
-
-      {/*  */}
     </div>
   );
 }
