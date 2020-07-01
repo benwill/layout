@@ -1,36 +1,19 @@
 .row {
   display: flex;
   flex: 1;
-  background: red;
   flex-direction: row;
 }
 
-.row__left {
-  padding: 10px;
-  flex: 1;
-  display: flex;
-  position: relative;
-  flex-direction: column;
-  background-color: yellow;
-  overflow-y: hidden;
+.row__edit {
+  background: #dbdbdb;
 }
 
-.row__middle {
-  padding: 10px;
+.column {
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-y: auto;
+  position: relative;
   flex: 1;
   display: flex;
-  position: relative;
   flex-direction: column;
-  background-color: orange;
-  overflow-y: hidden;
-}
-
-.row__right {
-  padding: 10px;
-  flex: 1;
-  display: flex;
-  position: relative;
-  flex-direction: column;
-  background-color: yellow;
-  overflow-y: hidden;
 }

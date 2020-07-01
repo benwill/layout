@@ -11,6 +11,10 @@ import EditChart from "./content/EditChart";
 import Jumbotron from "./content/Jumbotron";
 import Row from "./layouts/Row";
 import Box from "./layouts/Box";
+import EditRow from "./layouts/EditRow";
+import EditBox from "./layouts/EditBox";
+import IMAGE from "./content/Image";
+import EditImage from "./content/EditImage";
 
 export default {
   HeaderBody: {
@@ -52,7 +56,7 @@ export default {
     edit: EditText,
     canDrag: true,
     icon: "fa-font",
-    defaultProps: { value: "Some text" },
+    defaultProps: { value: "Some text", style: "default" },
   },
   SECTION: {
     component: Section,
@@ -69,16 +73,27 @@ export default {
   },
   ROW: {
     component: Row,
+    edit: EditRow,
     canDrag: true,
     icon: "fa-font",
-    defaultProps: { height: 300 },
-    supportedAreas: ["left", "middle", "right"],
+    defaultProps: { height: 300, columns: 4 },
+    supportedAreas: ["main_1", "main_2", "main_3", "main_4"],
   },
   BOX: {
     component: Box,
+    edit: EditBox,
     canDrag: true,
     icon: "fa-box",
     defaultProps: { height: 300 },
     supportedAreas: ["main"],
+  },
+  IMAGE: {
+    component: IMAGE,
+    edit: EditImage,
+    canDrag: true,
+    icon: "fa-dog",
+    defaultProps: {
+      image: "dog2",
+    },
   },
 };

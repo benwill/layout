@@ -1,10 +1,9 @@
 .section {
-  background: white;
+  margin-top: 5px;
+  margin-bottom: 5px;
   flex-direction: column;
   flex: 1;
   display: flex;
-  border: 2px solid #dbdbdb;
-  margin: 5px;
 }
 
 .section__title {

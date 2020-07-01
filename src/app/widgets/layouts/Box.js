@@ -2,12 +2,12 @@ import React from "react";
 
 import styles from "./box.module.css";
 
-function Box({ renderArea, renderDropZone }) {
+function Box({ renderArea, renderDropZone, background = "" }) {
   return (
     <div
-      className={`${styles.box} box`}
+      className={`${styles.box} box ${background}`}
       style={{
-        height: "300px",
+        height: "100%",
       }}
     >
       {renderArea("main")}

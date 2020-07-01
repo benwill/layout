@@ -2,28 +2,26 @@ import React from "react";
 
 import styles from "./row.module.css";
 
-function Row({ height, renderArea, renderDropZone }) {
+function Row({ height, renderArea, renderDropZone, columns = 4, canEdit }) {
+  const edit = canEdit ? styles.row__edit : null;
+
   return (
     <div
-      className={styles.row}
+      className={`${styles.row} ${edit}`}
       style={{
         height: `${height}px`,
       }}
     >
-      <div className={styles.row__left}>
-        {renderArea("left")}
-        {renderDropZone("left")}
-      </div>
+      {[...Array(columns)].map((_, i) => {
+        const counter = i + 1;
 
-      <div className={styles.row__middle}>
-        {renderArea("middle")}
-        {renderDropZone("middle")}
-      </div>
-
-      <div className={styles.row__right}>
-        {renderArea("right")}
-        {renderDropZone("right")}
-      </div>
+        return (
+          <div className={styles.column}>
+            {renderArea(`main_${counter}`)}
+            {renderDropZone(`main_${counter}`)}
+          </div>
+        );
+      })}
     </div>
   );
 }

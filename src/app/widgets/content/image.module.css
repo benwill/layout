@@ -1,0 +1,53 @@
+.cat1 {
+  display: flex;
+  flex: 1;
+  background-image: url("./cat1.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.cat2 {
+  display: flex;
+  flex: 1;
+  background-image: url("./cat2.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.cat3 {
+  display: flex;
+  flex: 1;
+  background-image: url("./cat3.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.dog1 {
+  display: flex;
+  flex: 1;
+  background-image: url("./dog1.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.dog2 {
+  display: flex;
+  flex: 1;
+  background-image: url("./dog2.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.dog3 {
+  display: flex;
+  flex: 1;
+  background-image: url("./dog3.jpeg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
