@@ -6,7 +6,7 @@ import styles from "./editwidget.module.css";
 import widgets from "../widgets";
 import { useSelector, useDispatch } from "react-redux";
 
-import { changeProperties } from "../../engine";
+import { changeProperties, removeItem } from "../../engine";
 import { focusCard } from "../redux/actions";
 
 const EditWidget = ({ editPath }) => {
@@ -29,8 +29,6 @@ const EditWidget = ({ editPath }) => {
     [dispatch, editPath]
   );
 
-  console.log(editProps);
-
   const componentType = widgets[editProps.type];
 
   const EditComponent = !componentType.edit ? null : componentType.edit;
@@ -42,13 +40,26 @@ const EditWidget = ({ editPath }) => {
     [dispatch]
   );
 
+  const onRemove = useCallback(() => {
+    dispatch(focusCard(undefined));
+    dispatch(removeItem({ sourcePath: editPath }));
+  }, [dispatch, editPath]);
+
   return (
     <div className={styles.edit}>
       <h2 className="title is-4">
         Edit Widget{" "}
-        <span className="icon icon-medium" onClick={onFocus}>
-          <i className="fas fa-times"></i>
-        </span>
+        <div>
+          <span
+            className={`icon icon-medium ${styles.edit__remove}`}
+            onClick={onRemove}
+          >
+            <i className="fas fa-dumpster"></i>
+          </span>
+          <span className="icon icon-medium margin-left-1" onClick={onFocus}>
+            <i className="fas fa-times"></i>
+          </span>
+        </div>
       </h2>
       {editPath}
 

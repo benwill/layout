@@ -10,6 +10,7 @@ import Chart from "./content/Chart";
 import EditChart from "./content/EditChart";
 import Jumbotron from "./content/Jumbotron";
 import Row from "./layouts/Row";
+import Box from "./layouts/Box";
 
 export default {
   HeaderBody: {
@@ -72,5 +73,12 @@ export default {
     icon: "fa-font",
     defaultProps: { height: 300 },
     supportedAreas: ["left", "middle", "right"],
+  },
+  BOX: {
+    component: Box,
+    canDrag: true,
+    icon: "fa-box",
+    defaultProps: { height: 300 },
+    supportedAreas: ["main"],
   },
 };

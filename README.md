@@ -6,6 +6,7 @@
 - Make a decent looking page
 - Think about 'GROWING' content (Charts, images) vs inline content
 - - Can specify supported drops
+- Another option, let card itself specify if it 'grows' or sets a height?
 
 ### Todos
 

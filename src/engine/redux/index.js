@@ -16,9 +16,9 @@ export {
   startDragging,
   stopDragging,
   moveItem,
+  removeItem,
   setConfig,
   addItem,
-  removeItem,
   reducer,
   toggleEdit,
 };
