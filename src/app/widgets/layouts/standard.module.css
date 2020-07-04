@@ -11,16 +11,19 @@
   display: flex;
   flex-direction: column;
   background: #cdcdcd;
+  padding: 5px;
 }
 
 .layout__main {
   grid-area: main;
   padding: 10px;
   overflow-y: auto;
+  display: flex;
+  flex-direction: column;
 }
 
 .layout__right {
-  padding: 5px;
+  padding: 10px;
   grid-area: right;
   display: flex;
   flex-direction: column;
@@ -30,7 +33,7 @@
 }
 
 .layout__left {
-  padding: 5px;
+  padding: 10px;
   grid-area: left;
   display: flex;
   flex-direction: column;

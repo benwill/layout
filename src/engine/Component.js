@@ -101,6 +101,7 @@ const Component = React.memo(({ componentPath, onFocus, widgets }) => {
     <div className={css} onClick={onClick}>
       <ReactComponent
         {...props}
+        componentPath={componentPath}
         canEdit={canEdit}
         onRemove={onRemove}
         updateProperties={updateProperties}

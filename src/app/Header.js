@@ -15,6 +15,10 @@ function Header({ onToggle, isDesignMode }) {
     dispatch(changeExample("Dashboard"));
   }, [dispatch]);
 
+  const changeToEmpty = useCallback(() => {
+    dispatch(changeExample("Empty"));
+  }, [dispatch]);
+
   return (
     <nav
       className="navbar is-link"
@@ -42,6 +46,9 @@ function Header({ onToggle, isDesignMode }) {
               </a>
               <a className="navbar-item" href="#/" onClick={changeToDashboard}>
                 Dashboard
+              </a>
+              <a className="navbar-item" href="#/" onClick={changeToEmpty}>
+                Empty
               </a>
             </div>
           </div>

@@ -13,6 +13,7 @@ import EditBox from "./layouts/EditBox";
 import IMAGE from "./content/Image";
 import EditImage from "./content/EditImage";
 import EditStandard from "./layouts/EditStandard";
+import TopBottom from "./layouts/TopBottom";
 
 export default {
   HeaderBody: {
@@ -80,6 +81,16 @@ export default {
     icon: "fa-dog",
     defaultProps: {
       image: "dog2",
+    },
+  },
+  TOPBOTTOM: {
+    component: TopBottom,
+    canDrag: true,
+    icon: "fa-cat",
+    supportedAreas: ["top", "bottom"],
+    defaultProps: {
+      top: 30,
+      bottom: 70,
     },
   },
 };

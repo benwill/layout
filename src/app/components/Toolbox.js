@@ -47,6 +47,7 @@ const Toolbox = () => {
               type={x.type}
               areas={x.areas}
               props={x.defaultProps}
+              className="toolbox__draggable"
             >
               <li className={styles.toolbox__list__item}>
                 <div>

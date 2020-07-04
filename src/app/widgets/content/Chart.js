@@ -16,7 +16,6 @@ function Chart({ type = "Pie" }) {
     height: undefined,
   });
 
-  console.log(dimensions);
   const options = {
     ...chartTypes[type],
     chart: {
