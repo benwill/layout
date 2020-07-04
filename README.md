@@ -1,12 +1,11 @@
 ### In Progress
 
-- Build some better examples:
-- eg.. page, with rhp and sample charts
-- Add KPIs + image examples
-- Make a decent looking page
-- Think about 'GROWING' content (Charts, images) vs inline content
-- - Can specify supported drops
-- Another option, let card itself specify if it 'grows' or sets a height?
+- Collapsable panel at runtime
+- Still need to think about components that 'FILL' vs 'Inline', e.g. they need to sit inside a box/top-bottom or row
+- - Can specify what components can be dropped?
+- Another option, let card itself specify if it 'grows' or sets a height? / similar to the box component?
+- Absolute positioned container, allow pixel perfect dnd
+- 'TEMPLATES', pre-made pages with droppable areas
 
 ### Todos
 
